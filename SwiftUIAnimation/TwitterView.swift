@@ -10,30 +10,74 @@ import SwiftUI
 
 struct TwitterView: View {
     
+    @State var showSetting = false
     @State var state = false
+    var data = dataModel
     
     var body: some View {
-        VStack {
-            
-            VStack() {
-                TwitterNavBar()
-                List(0 ..< 6) {item in
+        
+        ZStack {
+            NavigationView {
+                
+                //                            TwitterNavBar()
+                
+                List(data) {item in
                     HStack(spacing: 6) {
                         
                         VStack(alignment: .leading) {
-                            Text("")
-                                .frame(width: 60, height: 60)
+                            Image(item.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
                                 .background(Color.red)
-                                .cornerRadius(60 / 2)
-                                
+                                .cornerRadius(50 / 2)
+                            
                             Spacer()
                         }
-                       
-                        TwitterCardDescription()
+                        
+                        TwitterCardDescription(name: item.name, text: item.text)
+                            
                         
                     }
                 }
+                    
+                .navigationBarTitle("Home")
+                .navigationBarItems(trailing: Button(action: {
+                    print("Setting Pressed")
+                    
+                    
+                }) {
+                    
+                    Image(systemName: "gear")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                    
+                })
+                    
+                    .navigationBarItems(trailing: Button(action: {
+                        print("Home Pressed")
+                        self.showSetting.toggle()
+                        
+                    }) {
+                        
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                        
+                    })
+                
+                    .animation(.easeInOut(duration: 0.2))
+                .blur(radius: self.showSetting ? 20 : 0)
+                    
             }
+            
+            
+            
+            SettingView()
+                .cornerRadius(20)
+                .animation(.easeInOut(duration: 0.3))
+                .offset(x: 0, y: showSetting ? UIScreen.main.bounds.height / 1.6 : UIScreen.main.bounds.height)
+            
         }
     }
 }
@@ -56,7 +100,6 @@ struct TwitterNavBar: View {
                 .padding(.leading)
             
             Spacer()
-            
             Text("Home")
                 .font(.title)
                 .fontWeight(.bold)
@@ -80,18 +123,23 @@ struct TwitterNavBar: View {
 }
 
 struct TwitterCardDescription: View {
+    var name: String
+    var text: String
+    
     var body: some View {
         return VStack(alignment: .leading, spacing: 4) {
             
-            Text("Kenny Ho")
+            Text(name)
                 .fontWeight(.bold)
                 .font(.system(size: 22))
             
-            Text("Adam Neumann exited the suicide pact with $750M & everyone else gets to ride this out to its logical end, which will likely be a bankruptcy file. ")
+            Text(text)
                 .font(.body)
                 .lineLimit(3)
                 .frame(height: 70)
-                
+            
+            Spacer()
+            
             HStack(spacing: 4) {
                 BottomButton(image: "message")
                 Spacer()
@@ -106,6 +154,8 @@ struct TwitterCardDescription: View {
                     .foregroundColor(.gray)
                 Spacer()
             }
+                
+            .padding(.bottom, 4)
         }
     }
 }
@@ -130,9 +180,17 @@ struct Data: Identifiable {
 
 let dataModel = [
     Data(image: "ProfilePic", name: "Kenny Ho", text: "Adam Neumann exited the suicide pact with $750M & everyone else gets to ride this out to its logical end, which will likely be a bankruptcy file. "),
-    Data(image: "ProfilePic", name: "The New York Times", text: "The findings of a new study that looked at the heart of a swimmer vs. the heart of a runner underscored how sensitive our bodies are to different types of exercise "),
-    Data(image: "ProfilePic", name: "The Wall Street Journal", text: "Entrepreneur and presidential candidate Andrew Yang is proving has drummed up $10 million on the campaign trail in the past three months"),
-    Data(image: "ProfilePic", name: "The Economist", text: "Poverty alleviation has not been at the centre of either major party’s political campaigns for a long time"),
-    Data(image: "ProfilePic", name: "TechCrunch", text: "India’s Udaan raises $585M to expand its B2B e-commerce platform "),
-    Data(image: "ProfilePic", name: "AngelList", text: "A small number of startups, spanning all stages of fundraising, are consistently recruiting employees away from big tech.")
+    Data(image: "ProfilePic1", name: "The Wall Street Journal", text: "Entrepreneur and presidential candidate Andrew Yang is proving has drummed up $10 million on the campaign trail in the past three months"),
+    Data(image: "ProfilePic2", name: "The New York Times", text: "The findings of a new study that looked at the heart of a swimmer vs. the heart of a runner underscored how sensitive our bodies are to different types of exercise "),
+    Data(image: "ProfilePic3", name: "The Economist", text: "Poverty alleviation has not been at the centre of either major party’s political campaigns for a long time"),
+    Data(image: "ProfilePic4", name: "TechCrunch", text: "India’s Udaan raises $585M to expand its B2B e-commerce platform "),
+    Data(image: "ProfilePic5", name: "Bloomberg Technology", text: "Tech’s most controversial startup was founded by Palmer Luckey. It makes drone-killing robots")
 ]
+
+//            VStack {
+//                TwitterNavBar()
+//                VStack() {
+//
+//                    .frame(height: 180)
+//                    }
+//                }
