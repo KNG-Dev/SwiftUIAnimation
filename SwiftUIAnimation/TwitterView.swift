@@ -37,14 +37,24 @@ struct TwitterView: View {
                         
                         TwitterCardDescription(name: item.name, text: item.text)
                             
-                        
                     }
                 }
                     
                 .navigationBarTitle("Home")
-                .navigationBarItems(trailing: Button(action: {
-                    print("Setting Pressed")
                     
+                .navigationBarItems(
+                    leading: Button(action: {
+                    print("Homed Pressed")
+                        
+                    }) {
+                        
+                        Image(systemName: "person")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                        
+                    }, trailing: Button(action: {
+                        print("Setting Pressed")
+                    self.showSetting.toggle()
                     
                 }) {
                     
@@ -53,25 +63,10 @@ struct TwitterView: View {
                         .frame(width: 30, height: 30)
                     
                 })
-                    
-                    .navigationBarItems(trailing: Button(action: {
-                        print("Home Pressed")
-                        self.showSetting.toggle()
-                        
-                    }) {
-                        
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        
-                    })
-                
-                    .animation(.easeInOut(duration: 0.2))
-                .blur(radius: self.showSetting ? 20 : 0)
-                    
             }
             
-            
+            .animation(.easeInOut(duration: 0.2))
+                        .blur(radius: self.showSetting ? 20 : 0)
             
             SettingView()
                 .cornerRadius(20)

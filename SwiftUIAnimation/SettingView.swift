@@ -15,10 +15,10 @@ struct SettingView: View {
         VStack {
             Rectangle()
                 .frame(width: 35, height: 5)
-                .background(Color("Color4"))
                 .cornerRadius(3)
                 .padding(.top)
-                
+                .foregroundColor(Color("Color4"))
+            
             Image("TwitterStar")
                 .frame(width: 60, height: 60)
             
@@ -26,6 +26,8 @@ struct SettingView: View {
             
             Button(action: {
                 print("Dismiss")
+//                Toggle(isOn: <#T##Binding<Bool>#>)
+                
             }) {
                 Text("Cancel")
                 .frame(width: UIScreen.main.bounds.width - 40, height: 48)
@@ -61,7 +63,7 @@ let settingData = [
 
 struct SettingList: View {
    var setting = settingData
-    
+     
     var body: some View {
         return VStack {
                 ForEach(setting) { item in
@@ -71,6 +73,8 @@ struct SettingList: View {
                             .foregroundColor(Color("Color4"))
                             .padding(.leading, 24)
                         Text(item.title)
+                            .foregroundColor(Color.black)
+                        
                         Spacer()
                     }
                 }
