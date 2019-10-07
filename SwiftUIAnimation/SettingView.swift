@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @Binding var showSetting: Bool
     
     var body: some View {
         
@@ -26,7 +27,7 @@ struct SettingView: View {
             
             Button(action: {
                 print("Dismiss")
-//                Toggle(isOn: <#T##Binding<Bool>#>)
+                self.showSetting.toggle()
                 
             }) {
                 Text("Cancel")
@@ -35,20 +36,19 @@ struct SettingView: View {
                 .cornerRadius(30)
             }
             
+            
             Spacer()
         }
         
         .background(Color.white)
     }
-    
-
 }
 
-struct SettingView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingView()
-    }
-}
+//struct SettingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingView()
+//    }
+//}
 
 struct Setting: Identifiable {
     var id = UUID()

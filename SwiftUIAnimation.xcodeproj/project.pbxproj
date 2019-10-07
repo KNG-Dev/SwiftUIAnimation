@@ -16,6 +16,7 @@
 		34C0B74D233F5A8400838BEF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B74C233F5A8400838BEF /* HomeView.swift */; };
 		34C0B75723440B9200838BEF /* TwitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B75623440B9200838BEF /* TwitterView.swift */; };
 		34C0B75923464F5E00838BEF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B75823464F5D00838BEF /* SettingView.swift */; };
+		34E53CF8234BDFB2001A2F85 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E53CF7234BDFB2001A2F85 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		34C0B74C233F5A8400838BEF /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		34C0B75623440B9200838BEF /* TwitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterView.swift; sourceTree = "<group>"; };
 		34C0B75823464F5D00838BEF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		34E53CF7234BDFB2001A2F85 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				34C0B73A233F5A7200838BEF /* SceneDelegate.swift */,
 				34C0B74C233F5A8400838BEF /* HomeView.swift */,
 				34C0B75623440B9200838BEF /* TwitterView.swift */,
+				34E53CF7234BDFB2001A2F85 /* MenuView.swift */,
 				34C0B75823464F5D00838BEF /* SettingView.swift */,
 				34C0B73C233F5A7200838BEF /* ContentView.swift */,
 				34C0B73E233F5A7600838BEF /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34E53CF8234BDFB2001A2F85 /* MenuView.swift in Sources */,
 				34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */,
 				34C0B74D233F5A8400838BEF /* HomeView.swift in Sources */,
 				34C0B73B233F5A7200838BEF /* SceneDelegate.swift in Sources */,

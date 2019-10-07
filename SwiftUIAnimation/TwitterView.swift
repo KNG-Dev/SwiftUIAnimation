@@ -11,6 +11,7 @@ import SwiftUI
 struct TwitterView: View {
     
     @State var showSetting = false
+    @State var showMenu = false
     @State var state = false
     var data = dataModel
     
@@ -18,9 +19,6 @@ struct TwitterView: View {
         
         ZStack {
             NavigationView {
-                
-                //                            TwitterNavBar()
-                
                 List(data) {item in
                     HStack(spacing: 6) {
                         
@@ -45,6 +43,7 @@ struct TwitterView: View {
                 .navigationBarItems(
                     leading: Button(action: {
                     print("Homed Pressed")
+                        self.showMenu.toggle()
                         
                     }) {
                         
@@ -53,7 +52,6 @@ struct TwitterView: View {
                             .frame(width: 30, height: 30)
                         
                     }, trailing: Button(action: {
-                        print("Setting Pressed")
                     self.showSetting.toggle()
                     
                 }) {
@@ -68,10 +66,12 @@ struct TwitterView: View {
             .animation(.easeInOut(duration: 0.2))
                         .blur(radius: self.showSetting ? 20 : 0)
             
-            SettingView()
+            SettingView(showSetting: $showSetting)
                 .cornerRadius(20)
                 .animation(.easeInOut(duration: 0.3))
                 .offset(x: 0, y: showSetting ? UIScreen.main.bounds.height / 1.6 : UIScreen.main.bounds.height)
+            
+            
             
         }
     }
@@ -181,11 +181,3 @@ let dataModel = [
     Data(image: "ProfilePic4", name: "TechCrunch", text: "India’s Udaan raises $585M to expand its B2B e-commerce platform "),
     Data(image: "ProfilePic5", name: "Bloomberg Technology", text: "Tech’s most controversial startup was founded by Palmer Luckey. It makes drone-killing robots")
 ]
-
-//            VStack {
-//                TwitterNavBar()
-//                VStack() {
-//
-//                    .frame(height: 180)
-//                    }
-//                }
