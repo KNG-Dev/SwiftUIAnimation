@@ -51,6 +51,8 @@ struct TwitterView: View {
                             .resizable()
                             .frame(width: 30, height: 30)
                         
+                        
+                        
                     }, trailing: Button(action: {
                     self.showSetting.toggle()
                     
@@ -67,12 +69,13 @@ struct TwitterView: View {
                         .blur(radius: self.showSetting ? 20 : 0)
             
             SettingView(showSetting: $showSetting)
-                .cornerRadius(20)
-                .animation(.easeInOut(duration: 0.3))
-                .offset(x: 0, y: showSetting ? UIScreen.main.bounds.height / 1.6 : UIScreen.main.bounds.height)
+                
             
-            
-            
+            .animation(.easeInOut(duration: 0.2))
+                        .blur(radius: self.showMenu ? 20 : 0)
+                
+            MenuView(showMenu: $showMenu)
+                
         }
     }
 }

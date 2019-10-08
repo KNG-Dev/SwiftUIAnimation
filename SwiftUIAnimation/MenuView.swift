@@ -9,23 +9,39 @@
 import SwiftUI
 
 struct MenuView: View {
+    @Binding var showMenu: Bool
+    
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 10) {
             
             MenuHomeProfile()
             MenuList()
+            Rectangle()
+                .frame(width: UIScreen.main.bounds.width, height: 0.6)
+                .foregroundColor(Color("Color4"))
             MenuSettings()
             Spacer()
             
         }
+        .padding(30)
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .background(Color.white)
+        .animation(.default)
+            
+        .cornerRadius(30)
+        .padding(.trailing, 60)
+        .shadow(radius: 30)
+      
+        .animation(.easeInOut(duration: 0.3))
+        .offset(x: 0, y: showMenu ? UIScreen.main.bounds.height / 1.6 : UIScreen.main.bounds.height)
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuView()
-    }
-}
+//struct MenuView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MenuView()
+//    }
+//}
 
 struct MenuHomeProfile: View {
     var body: some View {
@@ -36,16 +52,15 @@ struct MenuHomeProfile: View {
                     Image("ProfilePic")
                         .resizable()
                         .frame(width: 60, height: 60)
-                        .background(Color.purple)
                         .cornerRadius(60 / 2)
                         .padding(.leading)
                     
                     Spacer()
                     
-                    Image(systemName: "gear")
+                    Image(systemName: "ellipsis.circle")
                     .resizable()
                     .frame(width: 30, height: 30)
-                        .padding(.trailing)
+                        .padding(.trailing, 45)
                         .foregroundColor(.blue)
                 }
                 
@@ -73,11 +88,8 @@ struct MenuHomeProfile: View {
                     
                 }
             }
-                
-            .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width, minHeight: 180, alignment: .leading)
-            .background(Color.white)
-            
         }
+        .padding(.leading, 40)
     }
 }
 
@@ -100,21 +112,28 @@ struct MenuList: View {
                     Spacer()
                 }
                 
-                .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width, minHeight: 60, alignment: .leading)
-                .padding(.leading)
+                .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width, minHeight: 60)
+                .padding(.leading, 24)
             }
         }
-        
-        .background(Color.white)
+        .padding(.leading, 40)
     }
 }
 
 struct MenuSettings: View {
     var body: some View {
-        Text("")
-            .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width, minHeight: 190, alignment: .leading)
-            .background(Color.green)
+        
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Settings and privacy")
+            Text("Help Center")
+                
+        }
+            
+        .frame(minHeight: 120, alignment: .leading)
+        .padding(.leading, 60)
+           
     }
+    
 }
 
 struct TextLabel: View {
@@ -146,3 +165,5 @@ var menuData = [
     Menu(title: "Moments", image: "bolt"),
     
 ]
+
+

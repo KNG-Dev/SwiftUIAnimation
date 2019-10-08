@@ -41,6 +41,13 @@ struct SettingView: View {
         }
         
         .background(Color.white)
+        
+        
+        .cornerRadius(20)
+            .animation(.easeInOut(duration: 0.3))
+            .offset(x: 0, y: showSetting ? UIScreen.main.bounds.height / 1.6 : UIScreen.main.bounds.height)
+        
+        
     }
 }
 
@@ -80,5 +87,8 @@ struct SettingList: View {
                 }
                 .frame(height: 40)
         }
+        
+        
+        
     }
 }
