@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34006E8B234CD60B00CA74A1 /* SlideInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34006E8A234CD60B00CA74A1 /* SlideInView.swift */; };
+		34006E8D234CEB8D00CA74A1 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34006E8C234CEB8D00CA74A1 /* TabBar.swift */; };
 		34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B738233F5A7200838BEF /* AppDelegate.swift */; };
 		34C0B73B233F5A7200838BEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73A233F5A7200838BEF /* SceneDelegate.swift */; };
 		34C0B73D233F5A7200838BEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73C233F5A7200838BEF /* ContentView.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34006E8A234CD60B00CA74A1 /* SlideInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInView.swift; sourceTree = "<group>"; };
+		34006E8C234CEB8D00CA74A1 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		34C0B735233F5A7200838BEF /* SwiftUIAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C0B738233F5A7200838BEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34C0B73A233F5A7200838BEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 				34C0B75623440B9200838BEF /* TwitterView.swift */,
 				34E53CF7234BDFB2001A2F85 /* MenuView.swift */,
 				34C0B75823464F5D00838BEF /* SettingView.swift */,
+				34006E8A234CD60B00CA74A1 /* SlideInView.swift */,
+				34006E8C234CEB8D00CA74A1 /* TabBar.swift */,
 				34C0B73C233F5A7200838BEF /* ContentView.swift */,
 				34C0B73E233F5A7600838BEF /* Assets.xcassets */,
 				34C0B743233F5A7600838BEF /* LaunchScreen.storyboard */,
@@ -158,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34006E8D234CEB8D00CA74A1 /* TabBar.swift in Sources */,
 				34E53CF8234BDFB2001A2F85 /* MenuView.swift in Sources */,
 				34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */,
 				34C0B74D233F5A8400838BEF /* HomeView.swift in Sources */,
@@ -165,6 +172,7 @@
 				34C0B75923464F5E00838BEF /* SettingView.swift in Sources */,
 				34C0B73D233F5A7200838BEF /* ContentView.swift in Sources */,
 				34C0B75723440B9200838BEF /* TwitterView.swift in Sources */,
+				34006E8B234CD60B00CA74A1 /* SlideInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

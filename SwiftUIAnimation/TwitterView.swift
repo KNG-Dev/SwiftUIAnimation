@@ -66,14 +66,9 @@ struct TwitterView: View {
             }
             
             .animation(.easeInOut(duration: 0.2))
-                        .blur(radius: self.showSetting ? 20 : 0)
+            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
             
             SettingView(showSetting: $showSetting)
-                
-            
-            .animation(.easeInOut(duration: 0.2))
-                        .blur(radius: self.showMenu ? 20 : 0)
-                
             MenuView(showMenu: $showMenu)
                 
         }

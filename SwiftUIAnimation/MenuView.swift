@@ -31,9 +31,15 @@ struct MenuView: View {
         .cornerRadius(30)
         .padding(.trailing, 60)
         .shadow(radius: 30)
-      
+            
         .animation(.easeInOut(duration: 0.3))
-        .offset(x: 0, y: showMenu ? UIScreen.main.bounds.height / 1.6 : UIScreen.main.bounds.height)
+        .offset(x: showMenu ? 0 : -UIScreen.main.bounds.width)
+        
+        .onTapGesture {
+            self.showMenu.toggle()
+        }
+        
+    
     }
 }
 
@@ -58,8 +64,8 @@ struct MenuHomeProfile: View {
                     Spacer()
                     
                     Image(systemName: "ellipsis.circle")
-                    .resizable()
-                    .frame(width: 30, height: 30)
+                        .resizable()
+                        .frame(width: 30, height: 30)
                         .padding(.trailing, 45)
                         .foregroundColor(.blue)
                 }
@@ -69,19 +75,19 @@ struct MenuHomeProfile: View {
                     
                     Spacer()
                 }
-            
+                
                 HStack {
                     
                     TextLabel(text: "@ken_kennedy_ho", textColor: Color.gray, font: .subheadline, fontWeight: .semibold)
                     Spacer()
                 }
-                    
+                
                 HStack {
                     HStack {
                         Text("61 Following")
                         Text("14 Followers")
                     }
-                    
+                        
                     .padding(.leading)
                     .padding(.top, 8)
                     Spacer()
@@ -101,17 +107,18 @@ struct MenuList: View {
                 
                 HStack {
                     Image(systemName: item.image)
-                    .resizable()
-//                        .aspectRatio(contentMode: .fit)
+                        .resizable()
+                        //                        .aspectRatio(contentMode: .fit)
                         .frame(width: 22, height: 24)
                         .foregroundColor(Color.gray)
                     
                     Text(item.title)
                         .padding(.leading)
+                        .foregroundColor(Color.black)
                     
                     Spacer()
                 }
-                
+                    
                 .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width, minHeight: 60)
                 .padding(.leading, 24)
             }
@@ -125,13 +132,16 @@ struct MenuSettings: View {
         
         VStack(alignment: .leading, spacing: 12) {
             Text("Settings and privacy")
+                .foregroundColor(Color.black)
+            
             Text("Help Center")
-                
+                .foregroundColor(Color.black)
+            
         }
             
         .frame(minHeight: 120, alignment: .leading)
         .padding(.leading, 60)
-           
+        
     }
     
 }
@@ -158,7 +168,7 @@ struct Menu: Identifiable {
 }
 
 var menuData = [
-
+    
     Menu(title: "Profile", image: "person"),
     Menu(title: "Lists", image: "list.dash"),
     Menu(title: "Bookmarks", image: "bookmark"),
