@@ -17,7 +17,6 @@ struct SlideInView: View {
     var body: some View {
         ZStack {
             
-              
                 TabView() {
                     TwitterView().tabItem({
                         Image(systemName: "gear")

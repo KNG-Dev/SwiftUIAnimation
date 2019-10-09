@@ -16,9 +16,6 @@ struct MenuView: View {
             
             MenuHomeProfile()
             MenuList()
-            Rectangle()
-                .frame(width: UIScreen.main.bounds.width, height: 0.6)
-                .foregroundColor(Color("Color4"))
             MenuSettings()
             Spacer()
             
@@ -26,11 +23,9 @@ struct MenuView: View {
         .padding(30)
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(Color.white)
+        
         .animation(.default)
-            
-        .cornerRadius(30)
-        .padding(.trailing, 60)
-        .shadow(radius: 30)
+        .padding(.trailing, 90)
             
         .animation(.easeInOut(duration: 0.3))
         .offset(x: showMenu ? 0 : -UIScreen.main.bounds.width)
@@ -38,16 +33,9 @@ struct MenuView: View {
         .onTapGesture {
             self.showMenu.toggle()
         }
-        
     
     }
 }
-
-//struct MenuView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MenuView()
-//    }
-//}
 
 struct MenuHomeProfile: View {
     var body: some View {
@@ -66,7 +54,7 @@ struct MenuHomeProfile: View {
                     Image(systemName: "ellipsis.circle")
                         .resizable()
                         .frame(width: 30, height: 30)
-                        .padding(.trailing, 45)
+                        .padding(.trailing, 15)
                         .foregroundColor(.blue)
                 }
                 
@@ -95,7 +83,6 @@ struct MenuHomeProfile: View {
                 }
             }
         }
-        .padding(.leading, 40)
     }
 }
 
@@ -122,28 +109,32 @@ struct MenuList: View {
                 .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width, minHeight: 60)
                 .padding(.leading, 24)
             }
+            
+            Rectangle()
+                .frame(width: UIScreen.main.bounds.width - 90, height: 0.6)
+                .foregroundColor(Color("Color4"))
         }
-        .padding(.leading, 40)
+            
+        .frame(width: UIScreen.main.bounds.width - 90)
+        .background(Color.white)
     }
 }
 
 struct MenuSettings: View {
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 20) {
             Text("Settings and privacy")
                 .foregroundColor(Color.black)
-            
+                .font(Font.system(size: 18))
             Text("Help Center")
                 .foregroundColor(Color.black)
-            
+                .font(Font.system(size: 18))
         }
-            
-        .frame(minHeight: 120, alignment: .leading)
-        .padding(.leading, 60)
-        
+             
+        .padding(.trailing, 130)
+        .frame(width: UIScreen.main.bounds.width - 90, height: 120)
     }
-    
 }
 
 struct TextLabel: View {

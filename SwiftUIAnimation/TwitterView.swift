@@ -19,39 +19,44 @@ struct TwitterView: View {
         
         ZStack {
             NavigationView {
-                List(data) {item in
-                    HStack(spacing: 6) {
-                        
-                        VStack(alignment: .leading) {
-                            Image(item.image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 50, height: 50)
-                                .background(Color.red)
-                                .cornerRadius(50 / 2)
+                TabView {
+                    List(data) {item in
+                        HStack(spacing: 6) {
                             
-                            Spacer()
+                            VStack(alignment: .leading) {
+                                Image(item.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 50, height: 50)
+                                    .background(Color.red)
+                                    .cornerRadius(50 / 2)
+                                
+                                Spacer()
+                            }
+                            
+                            TwitterCardDescription(name: item.name, text: item.text)
+                                
                         }
-                        
-                        TwitterCardDescription(name: item.name, text: item.text)
-                            
                     }
+                    
+                .tabItem({
+                    Image(systemName: "gear")
+                    Text("Twitter")
+                })
                 }
                     
                 .navigationBarTitle("Home")
-                    
                 .navigationBarItems(
                     leading: Button(action: {
                     print("Homed Pressed")
                         self.showMenu.toggle()
+                        
                         
                     }) {
                         
                         Image(systemName: "person")
                             .resizable()
                             .frame(width: 30, height: 30)
-                        
-                        
                         
                     }, trailing: Button(action: {
                     self.showSetting.toggle()
@@ -65,12 +70,22 @@ struct TwitterView: View {
                 })
             }
             
+            .offset(x: showMenu ? UIScreen.main.bounds.width - 90 : 0)
             .animation(.easeInOut(duration: 0.2))
-            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
-            
+                
+            GeometryReader { _ in
+                EmptyView()
+            }
+                
+            .background(Color.gray.opacity(0.7))
+            .opacity(self.showMenu ? 1 : 0)
+            .animation(.easeInOut(duration: 0.2))
+                
+//            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
+                
             SettingView(showSetting: $showSetting)
             MenuView(showMenu: $showMenu)
-                
+            
         }
     }
 }

@@ -10,13 +10,24 @@ import SwiftUI
 
 struct TabBar: View {
     var body: some View {
-        TabView {
-            
-            SlideInView().tabItem({
-                Image(systemName: "gear")
-                Text("Slide")
-            })
-                .tag(1)
+        
+        ZStack {
+            TabView {
+                
+                
+                TwitterView().tabItem({
+                    Image(systemName: "heart")
+                    Text("Twitter")
+                })
+                    .tag(0)
+                
+                SlideInView().tabItem({
+                    Image(systemName: "gear")
+                    Text("Slide")
+                })
+                    .tag(1)
+                
+            }
             
         }
     }
