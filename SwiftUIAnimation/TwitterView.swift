@@ -72,6 +72,7 @@ struct TwitterView: View {
             
             .offset(x: showMenu ? UIScreen.main.bounds.width - 90 : 0)
             .animation(.easeInOut(duration: 0.2))
+            .blur(radius: self.showSetting ? 20 : 0 )
                 
             GeometryReader { _ in
                 EmptyView()
@@ -80,13 +81,15 @@ struct TwitterView: View {
             .background(Color.gray.opacity(0.7))
             .opacity(self.showMenu ? 1 : 0)
             .animation(.easeInOut(duration: 0.2))
-                
+             
 //            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
-                
+            
             SettingView(showSetting: $showSetting)
             MenuView(showMenu: $showMenu)
             
         }
+        
+        
     }
 }
 

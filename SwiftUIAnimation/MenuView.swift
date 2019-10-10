@@ -12,28 +12,44 @@ struct MenuView: View {
     @Binding var showMenu: Bool
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 10) {
             
             MenuHomeProfile()
             MenuList()
             MenuSettings()
             Spacer()
+            MenuSettings()
+                
+            HStack {
+                Image(systemName: "lightbulb")
+                .resizable()
+                .frame(width: 20, height: 20)
+                    .foregroundColor(Color.blue)
+                Spacer()
+                Image(systemName: "qrcode.viewfinder")
+                .resizable()
+                .frame(width: 25, height: 25)
+                .foregroundColor(Color.blue)
+            }
             
+            .padding(.leading, 10)
+            .padding(.trailing)
         }
-        .padding(30)
+        .padding(.top, 30)
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(Color.white)
-        
+            
         .animation(.default)
         .padding(.trailing, 90)
             
         .animation(.easeInOut(duration: 0.3))
         .offset(x: showMenu ? 0 : -UIScreen.main.bounds.width)
-        
+            
         .onTapGesture {
             self.showMenu.toggle()
         }
-    
+        
     }
 }
 
@@ -131,9 +147,9 @@ struct MenuSettings: View {
                 .foregroundColor(Color.black)
                 .font(Font.system(size: 18))
         }
-             
         .padding(.trailing, 130)
         .frame(width: UIScreen.main.bounds.width - 90, height: 120)
+        
     }
 }
 
