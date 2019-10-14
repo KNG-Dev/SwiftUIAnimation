@@ -108,7 +108,6 @@ struct FacebookCardView: View {
                     switch self.showFaceBook {
                     case true:
                         self.state = .expanded
-                        
                     case false:
                         self.state = .normal
                     }

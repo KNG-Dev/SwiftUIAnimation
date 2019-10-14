@@ -59,10 +59,8 @@ struct MenuHomeProfile: View {
             VStack {
                 
                 HStack {
-                    Image("ProfilePic")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .cornerRadius(60 / 2)
+                    
+                    AvatarView(image: "ProfilePic", size: 60)
                         .padding(.leading)
                     
                     Spacer()

@@ -14,7 +14,6 @@ struct TabBar: View {
         ZStack {
             TabView {
                 
-                
                 TwitterView().tabItem({
                     Image(systemName: "heart")
                     Text("Twitter")

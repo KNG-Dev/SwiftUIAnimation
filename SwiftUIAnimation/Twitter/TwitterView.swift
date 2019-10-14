@@ -13,61 +13,12 @@ struct TwitterView: View {
     @State var showSetting = false
     @State var showMenu = false
     @State var state = false
-    var data = dataModel
     
     var body: some View {
         
         ZStack {
             NavigationView {
-                TabView {
-                    List(data) {item in
-                        HStack(spacing: 6) {
-                            
-                            VStack(alignment: .leading) {
-                                Image(item.image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                                    .background(Color.red)
-                                    .cornerRadius(50 / 2)
-                                
-                                Spacer()
-                            }
-                            
-                            TwitterCardDescription(name: item.name, text: item.text)
-                                
-                        }
-                    }
-                    
-                .tabItem({
-                    Image(systemName: "gear")
-                    Text("Twitter")
-                })
-                }
-                    
-                .navigationBarTitle("Home")
-                .navigationBarItems(
-                    leading: Button(action: {
-                    print("Homed Pressed")
-                        self.showMenu.toggle()
-                        
-                        
-                    }) {
-                        
-                        Image(systemName: "person")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        
-                    }, trailing: Button(action: {
-                    self.showSetting.toggle()
-                    
-                }) {
-                    
-                    Image(systemName: "gear")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                    
-                })
+                NewTabBar(showSetting: $showSetting, showMenu: $showMenu)
             }
             
             .offset(x: showMenu ? UIScreen.main.bounds.width - 90 : 0)
@@ -86,10 +37,7 @@ struct TwitterView: View {
             
             SettingView(showSetting: $showSetting)
             MenuView(showMenu: $showMenu)
-            
         }
-        
-        
     }
 }
 
@@ -105,9 +53,7 @@ struct TwitterNavBar: View {
     var body: some View {
         return HStack {
             
-            Image("ProfilePic")
-                .frame(width: 50, height: 50)
-                .cornerRadius(50 / 2)
+            AvatarView(image: "ProfilePic", size: 50)
                 .padding(.leading)
             
             Spacer()
@@ -197,3 +143,64 @@ let dataModel = [
     Data(image: "ProfilePic4", name: "TechCrunch", text: "India’s Udaan raises $585M to expand its B2B e-commerce platform "),
     Data(image: "ProfilePic5", name: "Bloomberg Technology", text: "Tech’s most controversial startup was founded by Palmer Luckey. It makes drone-killing robots")
 ]
+
+struct NewTabBar: View {
+
+    @Binding var showSetting: Bool
+    @Binding var showMenu: Bool
+    
+    var body: some View {
+        TabView {
+            HomeCell()
+        }
+            
+        .navigationBarTitle("Home")
+        .navigationBarItems(
+            leading: Button(action: {
+                print("Homed Pressed")
+                self.showMenu.toggle()
+                
+            }) {
+                
+                Image(systemName: "person")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                
+            }, trailing: Button(action: {
+                self.showSetting.toggle()
+                
+            }) {
+                
+                Image(systemName: "gear")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                
+        })
+        
+        .background(Color.black)
+    }
+}
+
+struct HomeCell: View {
+    var data = dataModel
+    
+    var body: some View {
+        List(data) {item in
+            HStack(spacing: 6) {
+                
+                VStack(alignment: .leading) {
+                    AvatarView(image: item.image, size: 50)
+                    Spacer()
+                }
+                
+                TwitterCardDescription(name: item.name, text: item.text)
+                
+            }
+        }
+            
+        .tabItem({
+            Image(systemName: "gear")
+            Text("Twitter")
+        })
+    }
+}

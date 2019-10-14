@@ -36,7 +36,6 @@ struct SettingView: View {
                 .cornerRadius(30)
             }
             
-            
             Spacer()
         }
         
@@ -50,12 +49,6 @@ struct SettingView: View {
         
     }
 }
-
-//struct SettingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingView()
-//    }
-//}
 
 struct Setting: Identifiable {
     var id = UUID()
@@ -87,8 +80,5 @@ struct SettingList: View {
                 }
                 .frame(height: 40)
         }
-        
-        
-        
     }
 }
