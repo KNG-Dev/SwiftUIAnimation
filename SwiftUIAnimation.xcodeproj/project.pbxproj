@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		34006E8B234CD60B00CA74A1 /* SlideInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34006E8A234CD60B00CA74A1 /* SlideInView.swift */; };
 		34006E8D234CEB8D00CA74A1 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34006E8C234CEB8D00CA74A1 /* TabBar.swift */; };
+		345A1C5223564E4D0007CF2F /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A1C5123564E4D0007CF2F /* TestData.swift */; };
+		345A1C54235650F10007CF2F /* FacebookHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A1C53235650F10007CF2F /* FacebookHomeCell.swift */; };
 		3482F41B234F9948006E8E7A /* TwitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F41A234F9948006E8E7A /* TwitterView.swift */; };
 		3482F41D234F9955006E8E7A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F41C234F9955006E8E7A /* MenuView.swift */; };
 		3482F41F234F9BFD006E8E7A /* FacebookHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F41E234F9BFD006E8E7A /* FacebookHomeView.swift */; };
 		3482F4212354C634006E8E7A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F4202354C634006E8E7A /* AvatarView.swift */; };
+		3482F42323551CB1006E8E7A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F42223551CB1006E8E7A /* Post.swift */; };
+		3482F42523551CED006E8E7A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F42423551CED006E8E7A /* User.swift */; };
 		34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B738233F5A7200838BEF /* AppDelegate.swift */; };
 		34C0B73B233F5A7200838BEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73A233F5A7200838BEF /* SceneDelegate.swift */; };
 		34C0B73D233F5A7200838BEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73C233F5A7200838BEF /* ContentView.swift */; };
@@ -26,10 +30,14 @@
 /* Begin PBXFileReference section */
 		34006E8A234CD60B00CA74A1 /* SlideInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInView.swift; sourceTree = "<group>"; };
 		34006E8C234CEB8D00CA74A1 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		345A1C5123564E4D0007CF2F /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		345A1C53235650F10007CF2F /* FacebookHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookHomeCell.swift; sourceTree = "<group>"; };
 		3482F41A234F9948006E8E7A /* TwitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterView.swift; sourceTree = "<group>"; };
 		3482F41C234F9955006E8E7A /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		3482F41E234F9BFD006E8E7A /* FacebookHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookHomeView.swift; sourceTree = "<group>"; };
 		3482F4202354C634006E8E7A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		3482F42223551CB1006E8E7A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = SwiftUIAnimation/Model/Post.swift; sourceTree = SOURCE_ROOT; };
+		3482F42423551CED006E8E7A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		34C0B735233F5A7200838BEF /* SwiftUIAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C0B738233F5A7200838BEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34C0B73A233F5A7200838BEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +71,25 @@
 			path = Twitter;
 			sourceTree = "<group>";
 		};
+		345A1C50235601DC0007CF2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3482F42223551CB1006E8E7A /* Post.swift */,
+				3482F42423551CED006E8E7A /* User.swift */,
+				345A1C5123564E4D0007CF2F /* TestData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		345A1C55235651240007CF2F /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				3482F41E234F9BFD006E8E7A /* FacebookHomeView.swift */,
+				345A1C53235650F10007CF2F /* FacebookHomeCell.swift */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
 		34C0B72C233F5A7200838BEF = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				34C0B738233F5A7200838BEF /* AppDelegate.swift */,
-				3482F41E234F9BFD006E8E7A /* FacebookHomeView.swift */,
 				34C0B73A233F5A7200838BEF /* SceneDelegate.swift */,
+				345A1C55235651240007CF2F /* Facebook */,
+				345A1C50235601DC0007CF2F /* Model */,
 				34C0B74C233F5A8400838BEF /* HomeView.swift */,
 				34006E8A234CD60B00CA74A1 /* SlideInView.swift */,
 				34006E8F234F98E600CA74A1 /* Twitter */,
@@ -178,9 +206,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3482F42523551CED006E8E7A /* User.swift in Sources */,
 				34006E8D234CEB8D00CA74A1 /* TabBar.swift in Sources */,
 				3482F41F234F9BFD006E8E7A /* FacebookHomeView.swift in Sources */,
 				34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */,
+				3482F42323551CB1006E8E7A /* Post.swift in Sources */,
+				345A1C5223564E4D0007CF2F /* TestData.swift in Sources */,
+				345A1C54235650F10007CF2F /* FacebookHomeCell.swift in Sources */,
 				34C0B74D233F5A8400838BEF /* HomeView.swift in Sources */,
 				3482F4212354C634006E8E7A /* AvatarView.swift in Sources */,
 				3482F41B234F9948006E8E7A /* TwitterView.swift in Sources */,

@@ -16,6 +16,7 @@ struct FacebookHomeView: View {
             
             FacebookTopBar()
             FacebookHomeCell()
+                .padding(.top, -10)
         }
     }
 }
@@ -26,75 +27,11 @@ struct FacebookHomeView_Previews: PreviewProvider {
     }
 }
 
-struct FacebookHomeCell: View {
-    var data = facebookData
-    
-    var body: some View {
-        List {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(data) { item in
-                        Image(item.image)
-                            .frame(width: 150, height: 223)
-                            .cornerRadius(15)
-                        
-                    }
-                        
-                    .offset(x: 10)
-                }
-            }
-                
-            .frame(width: UIScreen.main.bounds.width, height: 223)
-            
-            ForEach(data) { item in
-                VStack(alignment: .leading) {
-                    HStack {
-                        AvatarView(image: "", size: 40)
-                        
-                        Text("CNBC")
-                            .fontWeight(.heavy)
-                        
-                        Spacer()
-                    }
-                    .frame(width: UIScreen.main.bounds.width)
-                    
-                    Text("Hello World!, My name is Kenny Ho. What days is it today deodeodeff owfejow fejofejfejfefjoef en fennncenc ewncefjjfe j feojeojf")
-                        .lineLimit(3)
-                    Spacer()
-                    
-                    HStack {
-                        FacebookCellButton(image: "hand.thumbsup", text: "Like")
-                        FacebookCellButton(image: "bubble.left", text: "Comment")
-                        FacebookCellButton(image: "arrowshape.turn.up.right", text: "Share")
-                    }
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame(height: 40)
-                    .offset(x: -20)
-                    
-                }
-                .padding(.leading, 15)
-            }
-                
-            .frame(height: 180)
-        }
-        
-        .padding(.leading, -15)
-    }
-}
-
 struct FBData: Identifiable {
     var id = UUID()
     let name: String
     let image: String
 }
-
-let facebookData = [
-    FBData(name: "Kenny", image: "seasonPic1"),
-    FBData(name: "Joe", image: "seasonPic2"),
-    FBData(name: "Rachel", image: "seasonPic3"),
-    FBData(name: "Rachel", image: "seasonPic4")
-    
-]
 
 struct FacebookHomeMenu: View {
     @State private var selection = 0
@@ -164,7 +101,7 @@ struct FacebookMenuButton: View {
         
         Image(systemName: name)
             .frame(width: 35, height: 35)
-//            .font(.system(.subheadline))
+            //            .font(.system(.subheadline))
             .background(Color("Color5"))
             .cornerRadius(35 / 2)
     }
@@ -184,15 +121,37 @@ struct FacebookCellButton: View {
 }
 
 struct StatusView: View {
-    let data: FBData
+    let post: Post
+    private let colors: [Color] = [Color.black.opacity(0.8), Color.gray.opacity(0)]
+    
+    private var gradient: LinearGradient {
+        LinearGradient(gradient: Gradient(colors: colors), startPoint: .bottomLeading, endPoint: .center)
+    }
     
     var body: some View {
-        Image(data.image)
-            .resizable()
-            
-            .frame(width: 150, height: 223)
-            .border(Color.gray.opacity(1), width: 3)
-            .cornerRadius(15)
         
+        ZStack {
+            Image(post.image)
+                .resizable()
+                
+                .frame(width: 150, height: 223)
+                .border(Color.gray.opacity(0.5), width: 0.5)
+                .cornerRadius(15)
+            
+            Rectangle()
+                .fill(gradient).cornerRadius(15)
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Text(post.user)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
+                        .padding()
+                    Spacer().padding(.leading)
+                }
+            }
+        }
     } 
 }
