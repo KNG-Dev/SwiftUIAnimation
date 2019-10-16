@@ -20,11 +20,23 @@ struct TwitterView: View {
             NavigationView {
                 NewTabBar(showSetting: $showSetting, showMenu: $showMenu)
             }
-            
             .offset(x: showMenu ? UIScreen.main.bounds.width - 90 : 0)
-            .animation(.easeInOut(duration: 0.2))
-            .blur(radius: self.showSetting ? 20 : 0 )
+            .animation(.easeInOut(duration: 0.3))
+            
+            GeometryReader { _ in
+                EmptyView()
+            }
                 
+            .background(Color.black.opacity(0.3))
+            .opacity(self.showSetting ? 1 : 0)
+            .animation(.easeOut(duration: 0.2))
+            .edgesIgnoringSafeArea(.all)
+                
+            .onTapGesture {
+                self.showSetting.toggle()
+            }
+            
+            
             GeometryReader { _ in
                 EmptyView()
             }
@@ -32,8 +44,12 @@ struct TwitterView: View {
             .background(Color.gray.opacity(0.7))
             .opacity(self.showMenu ? 1 : 0)
             .animation(.easeInOut(duration: 0.2))
-             
-//            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
+                
+            .onTapGesture {
+                self.showMenu.toggle()
+            }
+            
+            //            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
             
             SettingView(showSetting: $showSetting)
             MenuView(showMenu: $showMenu)
@@ -145,7 +161,7 @@ let dataModel = [
 ]
 
 struct NewTabBar: View {
-
+    
     @Binding var showSetting: Bool
     @Binding var showMenu: Bool
     
@@ -154,7 +170,8 @@ struct NewTabBar: View {
             HomeCell()
         }
             
-        .navigationBarTitle("Home")
+            
+        .navigationBarTitle("Home", displayMode: .inline)
         .navigationBarItems(
             leading: Button(action: {
                 print("Homed Pressed")
@@ -176,8 +193,8 @@ struct NewTabBar: View {
                     .frame(width: 30, height: 30)
                 
         })
-        
-        .background(Color.black)
+            
+            .background(Color.black)
     }
 }
 

@@ -12,62 +12,28 @@ import SwiftUI
 //The reason that we need to create a method to toggle opening and closing the menu is so that we can change the value of menuOpen from the SideMenu view. Since structs are value types, they are immutable, so we would not be able to change the value after the SideMenu has been initialised.
 
 struct SlideInView: View {
-    @State var menuOpen = false
+   @State var menuOpen: Bool = false
     
     var body: some View {
         ZStack {
+            if !self.menuOpen {
+                Button(action: {
+                    self.openMenu()
+                }, label: {
+                    Text("Open")
+                })
+            }
             
-                TabView() {
-                    TwitterView().tabItem({
-                        Image(systemName: "gear")
-                    })
-                    
-                    NavigationView {
-                      
-                        HStack {
-                            Spacer()
-                            
-                            Button(action: {
-                                self.openMenu()
-                                
-                            }) {
-                                Text("Open")
-                                    .frame(width: 220, height: 70)
-                                    .background(Color.purple)
-                                    .opacity(self.menuOpen ? 0.5 : 1.0)
-                            }
-                                
-                            .disabled(self.menuOpen ? true : false)
-                            
-                        }
-                            
-                        .navigationBarTitle("Twitter")
-                            
-                    }
-                    
-                    .tabItem({
-                        Image(systemName: "circle")
-                    })
-                    
-                    HomeView().tabItem( {
-                       Image(systemName: "heart")
-                    })
-                    
-                    HomeView().tabItem( {
-                       Image(systemName: "square")
-                    })
-                }
-                 
-            .animation(.default)
-            .offset(x: menuOpen ? UIScreen.main.bounds.width - 120 : 0)
-            
-            SideMenu(width: 320, isOpen: self.menuOpen, menuClose: self.openMenu)
+            SideMenu(width: 270,
+                     isOpen: self.menuOpen,
+                     menuClose: self.openMenu)
         }
     }
     
     func openMenu() {
         self.menuOpen.toggle()
     }
+    
 }
 
 struct SlideInView_Previews: PreviewProvider {

@@ -13,19 +13,29 @@ struct FacebookSearch: View {
     @State var selected = false
     
     var body: some View {
-
-        TextField("Search Facebook", text: $searchText, onEditingChanged: { (_) in
-            self.selected.toggle()
-        }, onCommit: {
-            self.selected.toggle()
-            print(self.$searchText)
-        })
-            
-            .background(Color.red)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
         
-            .animation(.linear)
-            .frame(width: selected ? 200 : 50)
+        VStack {
+            
+            Button(action: {
+                self.selected.toggle()
+            }) {
+                Text("Button")
+            }
+            
+            HStack {
+                Spacer()
+                
+                TextField("Search Facebook", text: $searchText, onEditingChanged: { (_) in
+                    self.selected.toggle()
+                })
+                    
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                    .animation(.linear)
+                    .frame(width: selected ? 200 : 50)
+                    .padding(.trailing)
+            }
+        }
             
         
     }
