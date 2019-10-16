@@ -13,7 +13,6 @@ struct Post: Identifiable {
     var user: String
     var image: String
     var content: String
-    
 }
 
 

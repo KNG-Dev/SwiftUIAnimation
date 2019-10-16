@@ -11,12 +11,14 @@ import SwiftUI
 struct TestData {
     
     static func posts() -> [Post] {
-        let post1 = Post(user: "Kenny", image: "seasonPic1", content: "Adam Neumann exited the suicide pact with $750M & everyone else gets to ride this out to its logical end, which will likely be a bankruptcy file.")
-        let post2 = Post(user: "Rachel", image: "seasonPic2", content: "Entrepreneur and presidential candidate Andrew Yang is proving has drummed up $10 million on the campaign trail in the past three months")
-        let post3 = Post(user: "Monica", image: "seasonPic3", content: "The findings of a new study that looked at the heart of a swimmer vs. the heart of a runner underscored how sensitive our bodies are to different types of exercise")
-        let post4 = Post(user: "Phoebe", image: "seasonPic4", content: "Poverty alleviation has not been at the centre of either major party’s political campaigns for a long time")
+        let post1 = Post(user: "Ross", image: "seasonPic1", content: "We were on a BREAK!")
+        let post6 = Post(user: "Rachel", image: "seasonPic2", content: "My boss wants to buy my baby.")
+        let post3 = Post(user: "Monica", image: "seasonPic3", content: "And remember, if I'm harsh with you, it's only because you're doing it wrong.")
+        let post4 = Post(user: "Phoebe", image: "seasonPic4", content: "I drink because the more I drink, the less there is for kids to drink.")
+        let post5 = Post(user: "Joey", image: "seasonPic4", content: "Why God why!? we had a deal! Let the others grow old, not me!")
+        let post2 = Post(user: "Chandler", image: "seasonPic4", content: "I'm full, and yet I know if I stop eating this, I'll regret it.")
         
-        return [post1, post2,post3, post4 ]
+        return [post1, post2,post3, post4, post5, post6 ]
     }
 }
 

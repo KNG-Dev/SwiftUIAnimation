@@ -29,7 +29,7 @@ struct FacebookHomeCell: View {
             ForEach(data) { item in
                 VStack(alignment: .leading) {
                     HStack {
-                        AvatarView(image: "", size: 40)
+                        AvatarView(image: item.user, size: 40)
                         
                         Text(item.user)
                             .fontWeight(.heavy)

@@ -60,14 +60,16 @@ struct FacebookTopBar: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Facebook")
+                Text("facebook")
                     .foregroundColor(Color.blue)
+                    .fontWeight(.semibold)
                     .font(.system(size: 26))
                     .padding(.top, 3)
                     .padding(.leading)
                 Spacer()
                 
-                FacebookMenuButton(name: "gear")
+                
+                FacebookMenuButton(name: "magnifyingglass")
                 FacebookMenuButton(name: "message.circle.fill")
             }
                 
@@ -120,38 +122,3 @@ struct FacebookCellButton: View {
     }
 }
 
-struct StatusView: View {
-    let post: Post
-    private let colors: [Color] = [Color.black.opacity(0.8), Color.gray.opacity(0)]
-    
-    private var gradient: LinearGradient {
-        LinearGradient(gradient: Gradient(colors: colors), startPoint: .bottomLeading, endPoint: .center)
-    }
-    
-    var body: some View {
-        
-        ZStack {
-            Image(post.image)
-                .resizable()
-                
-                .frame(width: 150, height: 223)
-                .border(Color.gray.opacity(0.5), width: 0.5)
-                .cornerRadius(15)
-            
-            Rectangle()
-                .fill(gradient).cornerRadius(15)
-            
-            VStack {
-                Spacer()
-                HStack {
-                    Text(post.user)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .font(.system(size: 20))
-                        .padding()
-                    Spacer().padding(.leading)
-                }
-            }
-        }
-    } 
-}
