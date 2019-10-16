@@ -39,7 +39,7 @@ struct SettingView: View {
             Spacer()
         }
         
-        .background(Color.white)
+        .background(Color("TwitterDark"))
         
         
         .cornerRadius(20)
@@ -73,7 +73,7 @@ struct SettingList: View {
                             .foregroundColor(Color("Color4"))
                             .padding(.leading, 24)
                         Text(item.title)
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color.primary)
                         
                         Spacer()
                     }

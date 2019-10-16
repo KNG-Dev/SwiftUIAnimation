@@ -14,7 +14,8 @@ struct AvatarView: View {
     
     var body: some View {
         Image(image)
-            .resizable()
+//            .resizable()
+            .aspectRatio(contentMode: .fit)
             .frame(width: size, height: size)
             .background(Color.red)
             .cornerRadius(size / 2)

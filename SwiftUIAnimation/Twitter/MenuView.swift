@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+let statusBarHeight = UIApplication.shared.statusBarFrame.height
+let screen = UIScreen.main.bounds
+
 struct MenuView: View {
     @Binding var showMenu: Bool
     
@@ -19,12 +22,12 @@ struct MenuView: View {
             MenuList()
             MenuSettings()
             Spacer()
-            MenuSettings()
                 
             HStack {
                 Image(systemName: "lightbulb")
-                .resizable()
-                .frame(width: 20, height: 20)
+                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+                .frame(width: 22, height: 26)
                     .foregroundColor(Color.blue)
                 Spacer()
                 Image(systemName: "qrcode.viewfinder")
@@ -35,13 +38,17 @@ struct MenuView: View {
             
             .padding(.leading, 10)
             .padding(.trailing)
+            .padding(.bottom, statusBarHeight)
         }
-        .padding(.top, 30)
+        .padding(.top, statusBarHeight)
         .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.white)
+        .background(Color("TwitterDark"))
+        .edgesIgnoringSafeArea(.all)
             
-        .animation(.default)
-        .padding(.trailing, 90)
+        .animation(.easeInOut(duration: 0.3))
+            
+        //pushes the menuView toward left by 92
+        .padding(.trailing, 92)
             
         .animation(.easeInOut(duration: 0.3))
         .offset(x: showMenu ? 0 : -UIScreen.main.bounds.width)
@@ -49,7 +56,6 @@ struct MenuView: View {
         .onTapGesture {
             self.showMenu.toggle()
         }
-        
     }
 }
 
@@ -60,7 +66,7 @@ struct MenuHomeProfile: View {
                 
                 HStack {
                     
-                    AvatarView(image: "ProfilePic", size: 60)
+                    AvatarView(image: "ProfilePic", size: 50)
                         .padding(.leading)
                     
                     Spacer()
@@ -73,7 +79,7 @@ struct MenuHomeProfile: View {
                 }
                 
                 HStack {
-                    TextLabel(text: "Kenny", textColor: Color.black, font: .headline, fontWeight: .semibold)
+                    TextLabel(text: "Kenny", textColor: Color.primary, font: .headline, fontWeight: .semibold)
                     
                     Spacer()
                 }
@@ -97,6 +103,7 @@ struct MenuHomeProfile: View {
                 }
             }
         }
+        
     }
 }
 
@@ -108,14 +115,13 @@ struct MenuList: View {
                 
                 HStack {
                     Image(systemName: item.image)
-                        .resizable()
-                        //                        .aspectRatio(contentMode: .fit)
+//                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 22, height: 24)
                         .foregroundColor(Color.gray)
                     
                     Text(item.title)
                         .padding(.leading)
-                        .foregroundColor(Color.black)
                     
                     Spacer()
                 }
@@ -124,30 +130,29 @@ struct MenuList: View {
                 .padding(.leading, 24)
             }
             
-            Rectangle()
-                .frame(width: UIScreen.main.bounds.width - 90, height: 0.6)
+            Divider()
+                .frame(height: 0.6)
                 .foregroundColor(Color("Color4"))
         }
             
-        .frame(width: UIScreen.main.bounds.width - 90)
-        .background(Color.white)
+        .frame(width: UIScreen.main.bounds.width - 92)
     }
 }
 
 struct MenuSettings: View {
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 20) {
-            Text("Settings and privacy")
-                .foregroundColor(Color.black)
-                .font(Font.system(size: 18))
-            Text("Help Center")
-                .foregroundColor(Color.black)
-                .font(Font.system(size: 18))
+        HStack {
+            VStack(alignment: .leading, spacing: 25) {
+                Text("Settings and privacy")
+                    .font(Font.system(size: 18))
+                Text("Help Center")
+                    .font(Font.system(size: 18))
+            }
+                
+            .padding()
+            Spacer()
         }
-        .padding(.trailing, 130)
-        .frame(width: UIScreen.main.bounds.width - 90, height: 120)
-        
     }
 }
 
