@@ -14,4 +14,4 @@ Within SceneDelegate, change between TwitterView and FacebookView to test.
 
 • Swift 5
 
-• Simulations should be used on iPhone Xr or 11. I didnt adjust for other screen sizes (update for that coming soon). 
+• Simulations should be used on iPhone Xr or 11 
