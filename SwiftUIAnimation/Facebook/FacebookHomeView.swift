@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct FacebookHomeView: View {
-    
     var body: some View {
         
         VStack {

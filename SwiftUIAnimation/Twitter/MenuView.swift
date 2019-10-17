@@ -9,6 +9,7 @@
 import SwiftUI
 
 let statusBarHeight = UIApplication.shared.statusBarFrame.height
+
 let screen = UIScreen.main.bounds
 
 struct MenuView: View {

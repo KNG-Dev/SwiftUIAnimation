@@ -180,8 +180,7 @@ let socialData = [
     Social(title: "Snapchat", image: "snapchatIcon", backgroundColor: Color("Color1"), state: .normal)
 ]
 
-
-                
+            
 //                HomeCardView(title: "Robinhood", backgroundColor: showRobinhood ? Color("Color") : .gray, image: "robinhoodIcon", show: $showRobinhood, state: $state)
 //                    .onTapGesture {
 //                        self.showRobinhood.toggle()
