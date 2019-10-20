@@ -87,7 +87,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          collectionView.delegate = self
          collectionView.dataSource = self
          
-         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+         collectionView.register(ForYouCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
         
@@ -124,7 +124,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
             return collectionView.dequeueReusableCell(withReuseIdentifier: trendingCellId, for: indexPath)
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ForYouCell
         cell.backgroundColor = .white
         cell.delegate = self
         

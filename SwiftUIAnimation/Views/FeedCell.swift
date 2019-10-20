@@ -8,79 +8,56 @@
 
 import UIKit
 
-protocol FeedCellDelegate {
-    func didScroll(scrollView: UIScrollView)
-}
-
-class FeedCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    let cellId = "cellId"
-    let headerId = "headerId"
+class FeedCell: UICollectionViewCell {
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.delegate = self
-        cv.dataSource = self
-        cv.backgroundColor = .white
-        return cv
+    let topicLabel: UILabel = {
+        let label = UILabel()
+        label.text = "US News • 3 hours ago"
+        return label
     }()
     
-    var delegate: FeedCellDelegate?
+    
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Wayne Rooney's MLS career ends after DC United's spectacular collapse in extra time"
+        label.numberOfLines = 3
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        return label
+    }()
+    
+    let feedImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "seasonPic1"))
+        imageView.layer.cornerRadius = 8
+        imageView.backgroundColor = .gray
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         
-        addSubview(collectionView)
-        collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom:0, paddingRight: 0, width: 0, height: 0)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.backgroundColor = UIColor(named: "Color5")
+        setupStackView()
+    }
+    
+    private func setupStackView() {
+        let stackView = UIStackView(arrangedSubviews: [topicLabel, descriptionLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        stackView.distribution = .fill
         
-        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! HeaderView
+        addSubview(stackView)
+        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: frame.width / 1.35, height: frame.height)
+        topicLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
+        topicLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
         
-        let images = ["seasonPic1", "seasonPic2", "seasonPic1", "seasonPic4", "seasonPic1"]
-        header.image.image = UIImage(named: images[indexPath.item])
+        addSubview(feedImageView)
+        feedImageView.anchor(top: nil, left: stackView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 80, height: 80)
+        feedImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        return header
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: frame.width, height: 250)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        let colors: [UIColor] = [.red, .blue, .green, .purple, .black, .white, .orange, .yellow]
-        cell.backgroundColor = colors[indexPath.item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width, height: 160)
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.didScroll(scrollView: scrollView)
+        
     }
     
     required init?(coder: NSCoder) {
