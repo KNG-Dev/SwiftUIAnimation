@@ -9,36 +9,52 @@
 import SwiftUI
 import UIKit
 
-class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIBarPositioningDelegate {
+class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let cellId = "cellId"
-    
     let menuBar = MenuBar()
     
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         setupMenuBar()
         setupCollectionView()
-        
     }
     
+    //MARK: - Private Functions
     private func setupNavBar() {
          let appearance = UINavigationBarAppearance()
          let navBar = navigationController?.navigationBar
-         
          appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          appearance.backgroundColor = .red
          appearance.shadowColor = .red
          navBar?.isTranslucent = false
-         
          navBar?.standardAppearance = appearance
-         navigationItem.title = "Search"
-         
          navigationController?.hidesBarsOnSwipe = true
+        
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width - 140, height: 44)
+        let titleView = UIView(frame: frame)
+        
+        let searchBar = UISearchBar()
+        searchBar.frame = frame
+        searchBar.placeholder = "Search Twitter"
+        searchBar.tintColor = .white
+        searchBar.barTintColor = .white
+        searchBar.layer.cornerRadius = 20
+        searchBar.clipsToBounds = true
+        
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = UIColor(named: "Color5")
+        }
+        
+        titleView.addSubview(searchBar)
+        self.navigationItem.titleView = titleView
      }
      
      private func setupMenuBar() {
+        
+        menuBar.searchController = self
     
          let redView = UIView()
          redView.backgroundColor = .red
@@ -52,7 +68,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
              , right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
          
      }
-     
+    
      private func setupCollectionView() {
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
@@ -67,9 +83,25 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          collectionView.showsVerticalScrollIndicator = false
          collectionView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
         collectionView.isPagingEnabled = true
-        
+         
      }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 5
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let index = Int(targetContentOffset.pointee.x / view.frame.width)
+        let indexPath = IndexPath(item: index, section: 0)
+        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+    }
+    
+    func scrollToMenuIndex(menuIndex: Int) {
+        let indexPath = IndexPath(item: menuIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    //MARK: - CollectionView Delegates
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }

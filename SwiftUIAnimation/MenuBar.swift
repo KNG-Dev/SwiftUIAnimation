@@ -24,6 +24,8 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         return cv
     }()
     
+    var searchController: TwitterSearchViewController?
+    
     let titles = ["For You", "Trending", "News", "Sports", "Fun"]
     
     override init(frame: CGRect) {
@@ -46,35 +48,15 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         horizontalBarView.backgroundColor = .white
         
         addSubview(horizontalBarView)
-        
-        
-        
         horizontalBarView.anchor(top: nil, left: nil, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 4)
-        
-    
         horizontalBarLeftAnchorConstraint = horizontalBarView.leftAnchor.constraint(equalTo: leftAnchor)
         horizontalBarLeftAnchorConstraint?.isActive = true
         
         horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1 / 5).isActive = true
     }
     
-    func scrollToMenuIndex(menuIndex: Int) {
-        let indexPath = IndexPath(item: menuIndex, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        
-        let x = CGFloat(indexPath.item) * frame.width / 5
-        horizontalBarLeftAnchorConstraint?.constant = x
-        
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.layoutIfNeeded()
-        }, completion: nil)
-       
-        
-        scrollToMenuIndex(menuIndex: indexPath.item)
+        searchController?.scrollToMenuIndex(menuIndex: indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
