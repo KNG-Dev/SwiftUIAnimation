@@ -10,24 +10,23 @@ import SwiftUI
 
 struct TabBar: View {
     var body: some View {
-        
+
         ZStack {
             TabView {
-                
-                TwitterView().tabItem({
+
+                CommentDetailView().tabItem({
                     Image(systemName: "heart")
                     Text("Twitter")
                 })
                     .tag(0)
-                
-                SlideInView().tabItem({
+
+                SearchView().tabItem({
                     Image(systemName: "gear")
                     Text("Slide")
                 })
                     .tag(1)
-                
             }
-            
+
         }
     }
 }

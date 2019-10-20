@@ -54,7 +54,6 @@ struct TwitterButtonCardView: View {
             
         .animation(.easeInOut(duration: 0.3))
         .onAppear(perform: {
-            self.background(Color.red)
         })
         .background(Color("Color2"))
         .cornerRadius(8)

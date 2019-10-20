@@ -20,8 +20,9 @@ struct TwitterView: View {
             
             NavigationView {
                 NewTabBar(showSetting: $showSetting, showMenu: $showMenu)
-            }
                 
+            }
+              .background(Color.orange)
             .offset(x: showMenu ? UIScreen.main.bounds.width - 92 : 0)
             .animation(.easeInOut(duration: 0.3))
             
@@ -53,13 +54,10 @@ struct TwitterView: View {
             }
             
             //            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
-            
             SettingView(showSetting: $showSetting)
             MenuView(showMenu: $showMenu)
+                
         }
-        
-        .background(Color("TwitterDark"))
-        
     }
 }
 
@@ -67,10 +65,10 @@ struct TwitterCardDescription: View {
     var name: String
     var text: String
     var userName: String
+    @State var state = false
     
     var body: some View {
         return VStack(alignment: .leading, spacing: 4) {
-            
             
             HStack {
                 Text(name)
@@ -82,15 +80,13 @@ struct TwitterCardDescription: View {
                     .foregroundColor(Color("Color4"))
                 
             }
-            
             Text(text)
                 .font(.body)
                 .frame(minHeight: 70)
                 .lineLimit(nil)
             
             Spacer()
-            
-            BottomBarButtons()
+            BottomBarButtons(state: state)
         }
     }
 }
@@ -110,15 +106,16 @@ struct Data: Identifiable {
     var name: String
     var userName: String
     var text: String
+    var liked: Bool
 }
 
 let dataModel = [
-    Data(image: "ProfilePic", name: "Kenny Ho", userName: "ken_kennedy_ho", text: "Adam Neumann exited the suicide pact with $750M & everyone else gets to ride this out to its logical end, which will likely be a bankruptcy file. "),
-    Data(image: "ProfilePic1", name: "The Wall Street Journal", userName: "WSJ", text: "Entrepreneur and presidential candidate Andrew Yang is proving has drummed up $10 million on the campaign trail in the past three months."),
-    Data(image: "ProfilePic2", name: "The New York Times", userName: "nytimes", text: "The findings of a new study that looked at the heart of a swimmer vs. the heart of a runner underscored how sensitive our bodies are to different types of exercise."),
-    Data(image: "ProfilePic3", name: "The Economist", userName: "TheEconomist", text: "Poverty alleviation has not been at the centre of either major party’s political campaigns for a long time."),
-    Data(image: "ProfilePic4", name: "TechCrunch", userName: "TechCrunch", text: "India’s Udaan raises $585M to expand its B2B e-commerce platform."),
-    Data(image: "ProfilePic5", name: "Bloomberg Technology", userName: "technology", text: "Tech’s most controversial startup was founded by Palmer Luckey. It makes drone-killing robots.")
+    Data(image: "ProfilePic", name: "Kenny Ho", userName: "ken_kennedy_ho", text: "Adam Neumann exited the suicide pact with $750M & everyone else gets to ride this out to its logical end, which will likely be a bankruptcy file. ", liked: false),
+    Data(image: "ProfilePic1", name: "The Wall Street Journal", userName: "WSJ", text: "Entrepreneur and presidential candidate Andrew Yang is proving has drummed up $10 million on the campaign trail in the past three months.", liked: false),
+    Data(image: "ProfilePic2", name: "The New York Times", userName: "nytimes", text: "The findings of a new study that looked at the heart of a swimmer vs. the heart of a runner underscored how sensitive our bodies are to different types of exercise.", liked: false),
+    Data(image: "ProfilePic3", name: "The Economist", userName: "TheEconomist", text: "Poverty alleviation has not been at the centre of either major party’s political campaigns for a long time.", liked: false),
+    Data(image: "ProfilePic4", name: "TechCrunch", userName: "TechCrunch", text: "India’s Udaan raises $585M to expand its B2B e-commerce platform.", liked: false),
+    Data(image: "ProfilePic5", name: "Bloomberg Technology", userName: "technology", text: "Tech’s most controversial startup was founded by Palmer Luckey. It makes drone-killing robots.", liked: false)
 ]
 
 struct NewTabBar: View {
@@ -126,13 +123,18 @@ struct NewTabBar: View {
     @Binding var showSetting: Bool
     @Binding var showMenu: Bool
     var size: CGFloat = 33
+    @State var state = false
     
     var body: some View {
         TabView {
-            TwitterHomeCell()
+            TwitterHomeCell(state: $state)
+            SearchView()
+            .tabItem({
+                Image(systemName: "magnifyingglass")
+                Text("Search")
+            })
         }
-            
-            
+             
         .navigationBarTitle("Home", displayMode: .inline)
         .navigationBarItems(
             leading: Button(action: {
@@ -168,49 +170,3 @@ struct TwitterView_Previews: PreviewProvider {
     }
 }
 
-
-struct BottomBarButtons: View {
-    @State var liked = false
-    
-    var body: some View {
-        HStack {
-            
-            BottomButton(image: "message")
-                .frame(width: 15, height: 15)
-                .foregroundColor(.gray)
-            
-            Spacer()
-            BottomButton(image: "arrow.2.squarepath")
-                .frame(width: 15, height: 15)
-                .foregroundColor(.gray)
-            
-            Spacer()
-            
-            BottomButton(image: self.liked ? "heart.fill" : "heart")
-                .onTapGesture {
-                    self.liked.toggle()
-            }
-                
-            .animation(.easeInOut)
-            .frame(width: self.liked ? 18 : 15, height: self.liked ? 18 : 15)
-            .foregroundColor(self.liked ? Color.red : Color.gray)
-            
-            //                LottieView(filename: "TwitterLike")
-            //                .frame(width: 130, height:130)
-            
-            Spacer()
-            
-            
-            BottomButton(image: "tray.and.arrow.up")
-                .frame(width: 15, height: 15)
-                .foregroundColor(.gray)
-            
-            
-            Spacer()
-        }
-            
-        .frame(height:20, alignment: .leading)
-            
-        .padding(.bottom, 4)
-    }
-}

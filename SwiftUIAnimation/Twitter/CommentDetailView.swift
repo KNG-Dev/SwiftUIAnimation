@@ -8,13 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CommentDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    var image = "ProfilePic3"
-    var name = "Kenny"
-    var comment = "Comment"
+    var image = ""
+    var name = ""
+    var comment = ""
     var userName = ""
+    @State var state = false
     
     var body: some View {
          
@@ -47,12 +48,9 @@ struct ContentView: View {
                 .padding(.leading)
                 Divider()
                 
-                BottomBarButtons()
+                BottomBarButtons(state: state)
+                    
                     .padding(.leading, 50)
-                
-                Rectangle()
-                    .fill(Color.orange)
-                    .frame(height: 200)
                     
             }
                 
@@ -70,19 +68,16 @@ struct ContentView: View {
                     .frame(width: 30, height: 30)
         })
         
-            
             .background(Color("Color5"))
             .edgesIgnoringSafeArea(.bottom)
-            
-
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
 
 struct TwitterComment: View {
     var comment: String
