@@ -13,6 +13,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
     private let cellId = "cellId"
     let menuBar = MenuBar()
     
+    
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
