@@ -14,19 +14,19 @@ class MenuCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Sec"
         label.textColor = .gray
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
     
     override var isHighlighted: Bool {
         didSet {
-            titleLabel.textColor = isHighlighted ? UIColor.white : UIColor.gray
+            titleLabel.textColor = isHighlighted ? UIColor(named: "Color2") : .gray
         }
     }
     
     override var isSelected: Bool {
         didSet {
-            titleLabel.textColor = isSelected ? UIColor.white : UIColor.gray
+            titleLabel.textColor = isSelected ? UIColor(named: "Color2") : .gray
         }
     }
     

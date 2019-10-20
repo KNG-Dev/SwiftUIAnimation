@@ -23,6 +23,9 @@
 		349F5A95235BAFCA00C1CA67 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F5A94235BAFCA00C1CA67 /* Extensions.swift */; };
 		349F5A97235BD7F300C1CA67 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F5A96235BD7F300C1CA67 /* MenuBar.swift */; };
 		349F5A9A235C47D600C1CA67 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F5A99235C47D600C1CA67 /* MenuCell.swift */; };
+		349F5A9C235C72A400C1CA67 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F5A9B235C72A400C1CA67 /* FeedCell.swift */; };
+		349F5A9E235C942A00C1CA67 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F5A9D235C942A00C1CA67 /* HeaderView.swift */; };
+		349F5AA0235CAC7600C1CA67 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F5A9F235CAC7500C1CA67 /* TrendingCell.swift */; };
 		34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B738233F5A7200838BEF /* AppDelegate.swift */; };
 		34C0B73B233F5A7200838BEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73A233F5A7200838BEF /* SceneDelegate.swift */; };
 		34C0B73D233F5A7200838BEF /* CommentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73C233F5A7200838BEF /* CommentDetailView.swift */; };
@@ -54,6 +57,9 @@
 		349F5A94235BAFCA00C1CA67 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		349F5A96235BD7F300C1CA67 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		349F5A99235C47D600C1CA67 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		349F5A9B235C72A400C1CA67 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		349F5A9D235C942A00C1CA67 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		349F5A9F235CAC7500C1CA67 /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		34C0B735233F5A7200838BEF /* SwiftUIAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C0B738233F5A7200838BEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34C0B73A233F5A7200838BEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				349F5A99235C47D600C1CA67 /* MenuCell.swift */,
+				349F5A9D235C942A00C1CA67 /* HeaderView.swift */,
+				349F5A9B235C72A400C1CA67 /* FeedCell.swift */,
+				349F5A9F235CAC7500C1CA67 /* TrendingCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +280,7 @@
 				34FFCCFD23574B2C00E83AA3 /* TwitterHomeCell.swift in Sources */,
 				34006E8D234CEB8D00CA74A1 /* TabBar.swift in Sources */,
 				3482F41F234F9BFD006E8E7A /* FacebookHomeView.swift in Sources */,
+				349F5A9C235C72A400C1CA67 /* FeedCell.swift in Sources */,
 				349F5A93235B587800C1CA67 /* BottomBarButtons.swift in Sources */,
 				34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */,
 				349F5A9A235C47D600C1CA67 /* MenuCell.swift in Sources */,
@@ -280,6 +290,7 @@
 				34C0B74D233F5A8400838BEF /* HomeView.swift in Sources */,
 				3482F4212354C634006E8E7A /* AvatarView.swift in Sources */,
 				3482F41B234F9948006E8E7A /* TwitterView.swift in Sources */,
+				349F5A9E235C942A00C1CA67 /* HeaderView.swift in Sources */,
 				349F5A95235BAFCA00C1CA67 /* Extensions.swift in Sources */,
 				345A1C57235658AA0007CF2F /* StatusView.swift in Sources */,
 				34FFCCFA2357309600E83AA3 /* LottieView.swift in Sources */,
@@ -288,6 +299,7 @@
 				34C0B73B233F5A7200838BEF /* SceneDelegate.swift in Sources */,
 				34C0B75923464F5E00838BEF /* SettingView.swift in Sources */,
 				349F5A97235BD7F300C1CA67 /* MenuBar.swift in Sources */,
+				349F5AA0235CAC7600C1CA67 /* TrendingCell.swift in Sources */,
 				34C0B73D233F5A7200838BEF /* CommentDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

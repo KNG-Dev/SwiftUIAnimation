@@ -11,8 +11,6 @@ import Lottie
 
 struct LottieView: UIViewRepresentable {
     
-    
-    
     let animationView = AnimationView()
     var filename = "TwitterLike"
     

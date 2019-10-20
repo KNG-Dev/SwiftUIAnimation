@@ -9,8 +9,20 @@
 import SwiftUI
 import UIKit
 
-class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, FeedCellDelegate {
+ 
+    func didScroll(scrollView: UIScrollView) {
+        var lastY: CGFloat = 0
+        let isScrollingUp = scrollView.contentOffset.y - lastY > 0
+        lastY = scrollView.contentOffset.y
+    
+        UIView.animate(withDuration: 0.33, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+             self.navigationController?.setNavigationBarHidden(isScrollingUp, animated: true)
+        }, completion: nil)
+    }
+    
     private let cellId = "cellId"
+    private let trendingCellId = "trendingCellId"
     let menuBar = MenuBar()
     
     //MARK: - ViewDidLoad
@@ -27,8 +39,9 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          let navBar = navigationController?.navigationBar
          appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-         appearance.backgroundColor = .red
-         appearance.shadowColor = .red
+         appearance.backgroundColor = .white
+         appearance.shadowColor = .white
+        
          navBar?.isTranslucent = false
          navBar?.standardAppearance = appearance
          navigationController?.hidesBarsOnSwipe = true
@@ -39,8 +52,6 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         let searchBar = UISearchBar()
         searchBar.frame = frame
         searchBar.placeholder = "Search Twitter"
-        searchBar.tintColor = .white
-        searchBar.barTintColor = .white
         searchBar.layer.cornerRadius = 20
         searchBar.clipsToBounds = true
         
@@ -56,14 +67,11 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         
         menuBar.searchController = self
     
-         let redView = UIView()
-         redView.backgroundColor = .red
+//         let whiteView = UIView()
+//         whiteView.backgroundColor = .white
          
-         view.addSubview(redView)
+//         view.addSubview(whiteView)
          view.addSubview(menuBar)
-         
-         redView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil
-             , right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
          menuBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil
              , right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
          
@@ -79,7 +87,10 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          collectionView.delegate = self
          collectionView.dataSource = self
          
-         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        
+        collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
+        
          collectionView.showsVerticalScrollIndicator = false
          collectionView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
         collectionView.isPagingEnabled = true
@@ -106,10 +117,18 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         return 5
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        let colors: [UIColor] = [.red, .blue, .green, .yellow, .purple]
-        cell.backgroundColor = colors[indexPath.item]
+        
+        if indexPath.item == 1 {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: trendingCellId, for: indexPath)
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
+        cell.backgroundColor = .white
+        cell.delegate = self
+        
+        
         return cell
     }
     
@@ -156,4 +175,12 @@ struct SearchMenuTab: View {
                 .foregroundColor(Color.blue)
         }
     }
+}
+
+enum Section {
+    case forYou
+    case trending
+    case news
+    case sports
+    case fun
 }
