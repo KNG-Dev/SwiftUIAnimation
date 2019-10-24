@@ -17,15 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         // Create the SwiftUI view that provides the window contents.
-        let layout = UICollectionViewFlowLayout()
-        let contentView = TwitterSearchViewController(collectionViewLayout: layout)
-        let navBar = UINavigationController(rootViewController: contentView)
+        let contentView = TwitterView()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-//            window.rootViewController = UIHostingController(rootView: contentView)
-            window.rootViewController = navBar
+            window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }

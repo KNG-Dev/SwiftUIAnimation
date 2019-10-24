@@ -10,7 +10,7 @@ import UIKit
 
 
 
-protocol FeedCellDelegate {
+protocol NavCollapseDelegate {
     func didScroll(scrollView: UIScrollView)
 }
 
@@ -27,7 +27,7 @@ class ForYouCell: UICollectionViewCell, UICollectionViewDataSource, UICollection
         return cv
     }()
     
-    var delegate: FeedCellDelegate?
+    var delegate: NavCollapseDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,18 +64,14 @@ class ForYouCell: UICollectionViewCell, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
-        let colors: [UIColor] = [.red, .blue, .green, .purple, .black, .white, .orange, .yellow]
-//        cell.backgroundColor = colors[indexPath.item]
+        let images = ["seasonPic1", "seasonPic2", "seasonPic3", "seasonPic4", "seasonPic1", "seasonPic2", "seasonPic3", "seasonPic1",]
+        cell.feedImageView.image = UIImage(named: images[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width, height: 110)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2
-//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1

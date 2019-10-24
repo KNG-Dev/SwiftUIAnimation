@@ -28,7 +28,7 @@ class FeedCell: UICollectionViewCell {
     
     let feedImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "seasonPic1"))
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = 16
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill

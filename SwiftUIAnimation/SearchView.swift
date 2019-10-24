@@ -9,20 +9,19 @@
 import SwiftUI
 import UIKit
 
-class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, FeedCellDelegate {
+class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NavCollapseDelegate {
  
     func didScroll(scrollView: UIScrollView) {
         var lastY: CGFloat = 0
         let isScrollingUp = scrollView.contentOffset.y - lastY > 0
         lastY = scrollView.contentOffset.y
-    
-        UIView.animate(withDuration: 0.33, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-             self.navigationController?.setNavigationBarHidden(isScrollingUp, animated: true)
-        }, completion: nil)
+//        navigationController?.hidesBarsOnSwipe = true
+    self.navigationController?.setNavigationBarHidden(isScrollingUp, animated: true)
     }
     
     private let cellId = "cellId"
     private let trendingCellId = "trendingCellId"
+    private let newsCellId = "newsCellId"
     let menuBar = MenuBar()
     
     //MARK: - ViewDidLoad
@@ -41,13 +40,18 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          appearance.backgroundColor = .white
          appearance.shadowColor = .white
-        
-         navBar?.isTranslucent = false
+//
+//         navBar?.isTranslucent = false
          navBar?.standardAppearance = appearance
          navigationController?.hidesBarsOnSwipe = true
         
         let frame = CGRect(x: 0, y: 0, width: view.frame.width - 140, height: 44)
         let titleView = UIView(frame: frame)
+        
+        let whiteView = UIView()
+         whiteView.backgroundColor = .white
+         view.addSubview(whiteView)
+//        whiteView.frame.size = CGSize(width: view.frame.width, height: 90)
         
         let searchBar = UISearchBar()
         searchBar.frame = frame
@@ -67,13 +71,8 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         
         menuBar.searchController = self
     
-//         let whiteView = UIView()
-//         whiteView.backgroundColor = .white
-         
-//         view.addSubview(whiteView)
          view.addSubview(menuBar)
-         menuBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil
-             , right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
+         menuBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
          
      }
     
@@ -88,8 +87,8 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          collectionView.dataSource = self
          
          collectionView.register(ForYouCell.self, forCellWithReuseIdentifier: cellId)
-        
         collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
+        collectionView.register(NewsCell.self, forCellWithReuseIdentifier: newsCellId)
         
          collectionView.showsVerticalScrollIndicator = false
          collectionView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
@@ -121,7 +120,14 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.item == 1 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: trendingCellId, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: trendingCellId, for: indexPath) as! TrendingCell
+            cell.delegate = self
+            return cell
+        } else if indexPath.item == 2 {
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newsCellId, for: indexPath) as! NewsCell
+//            cell.delegate = self
+            
+            return cell
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ForYouCell
@@ -137,50 +143,28 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
     }
 }
 
-struct SearchView: View {
+struct TwitterSearchView: View {
     var body: some View {
-        HStack {
-            
-            SearchMenuTab(text: "For You")
-            SearchMenuTab(text: "Trending")
-            SearchMenuTab(text: "News")
-            SearchMenuTab(text: "Sport")
-            SearchMenuTab(text: "Fun")
-        }
-        
-        .frame(height: 60)
+         TwitterSearchIntegratedController().edgesIgnoringSafeArea(.all)
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}
-
-struct SearchMenuTab: View {
-    var text: String
+struct TwitterSearchIntegratedController: UIViewControllerRepresentable {
     
-    var body: some View {
-        VStack {
-            Button(action: {
-                print("1")
-            }, label: {
-                Text(text)
-                    .tag(1)
-            })
-            
-            Rectangle()
-                .frame(height: 2)
-                .foregroundColor(Color.blue)
-        }
+    func makeUIViewController(context: UIViewControllerRepresentableContext<TwitterSearchIntegratedController>) -> UINavigationController {
+        let layout = UICollectionViewFlowLayout()
+        let twitterSearchViewController = TwitterSearchViewController(collectionViewLayout: layout)
+        let navController = UINavigationController(rootViewController: twitterSearchViewController)
+        return navController
+    }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: UIViewControllerRepresentableContext<TwitterSearchIntegratedController>) {
     }
 }
 
-enum Section {
-    case forYou
-    case trending
-    case news
-    case sports
-    case fun
+struct TwitterSearchView_Preview: PreviewProvider {
+    static var previews: some View {
+        TwitterSearchView()
+    }
 }
+

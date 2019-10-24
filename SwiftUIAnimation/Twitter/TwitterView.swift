@@ -13,16 +13,55 @@ struct TwitterView: View {
     @State var showSetting = false
     @State var showMenu = false
     @State var state = false
+    var size: CGFloat = 33
     
     var body: some View {
         
         ZStack {
-            
-            NavigationView {
-                NewTabBar(showSetting: $showSetting, showMenu: $showMenu)
+            TabView {
+                NavigationView {
+                    TwitterHomeCell(state: $state)
+                        .navigationBarTitle("Home", displayMode: .inline)
+                        .navigationBarItems(
+                            leading: Button(action: {
+                                print("Homed Pressed")
+                                self.showMenu.toggle()
+                                
+                            }) {
+                                Image("ProfilePic").renderingMode(.original)
+                                    .aspectRatio(contentMode: .fill)
+                                    .animation(.easeIn(duration: 0.2))
+                                    .frame(width:self.showMenu ? 0 : size, height: self.showMenu ? 0 : size)
+                                    .cornerRadius(size / 2)
+                                    .background(Color.clear)
+                                    .padding(.leading, 4)
+                                
+                            }, trailing: Button(action: {
+                                self.showSetting.toggle()
+                                
+                            }) {
+                                
+                                Image(systemName: "gear")
+                                    .resizable()
+                                    .frame(width: size, height: size)
+                                
+                        })
+                }
+                    
+                    
+                .tabItem({
+                    Image(systemName: "gear")
+                    Text("Home")
+                })
                 
+                TwitterSearchView().tabItem({
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                })
+                    .tag(2)
             }
-              .background(Color.orange)
+                
+                
             .offset(x: showMenu ? UIScreen.main.bounds.width - 92 : 0)
             .animation(.easeInOut(duration: 0.3))
             
@@ -38,7 +77,6 @@ struct TwitterView: View {
             .onTapGesture {
                 self.showSetting.toggle()
             }
-            
             
             GeometryReader { _ in
                 EmptyView()
@@ -56,8 +94,10 @@ struct TwitterView: View {
             //            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
             SettingView(showSetting: $showSetting)
             MenuView(showMenu: $showMenu)
-                
+            
+            
         }
+        
     }
 }
 
@@ -118,55 +158,10 @@ let dataModel = [
     Data(image: "ProfilePic5", name: "Bloomberg Technology", userName: "technology", text: "Tech’s most controversial startup was founded by Palmer Luckey. It makes drone-killing robots.", liked: false)
 ]
 
-struct NewTabBar: View {
-    
-    @Binding var showSetting: Bool
-    @Binding var showMenu: Bool
-    var size: CGFloat = 33
-    @State var state = false
-    
-    var body: some View {
-        TabView {
-            TwitterHomeCell(state: $state)
-            SearchView()
-            .tabItem({
-                Image(systemName: "magnifyingglass")
-                Text("Search")
-            })
-        }
-             
-        .navigationBarTitle("Home", displayMode: .inline)
-        .navigationBarItems(
-            leading: Button(action: {
-                print("Homed Pressed")
-                self.showMenu.toggle()
-                
-            }) {
-                Image("ProfilePic").renderingMode(.original)
-                    .aspectRatio(contentMode: .fill)
-                    .animation(.easeIn(duration: 0.2))
-                    .frame(width:self.showMenu ? 0 : size, height: self.showMenu ? 0 : size)
-                    .cornerRadius(size / 2)
-                    .background(Color.clear)
-                    .padding(.leading, 4)
-                
-            }, trailing: Button(action: {
-                self.showSetting.toggle()
-                
-            }) {
-                
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: size, height: size)
-                
-        })
-    }
-}
-
 struct TwitterView_Previews: PreviewProvider {
     static var previews: some View {
         TwitterView()
-//            .environment(\.colorScheme, .dark)
+        //            .environment(\.colorScheme, .dark)
     }
 }
 

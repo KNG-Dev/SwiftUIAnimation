@@ -20,7 +20,7 @@ struct TabBar: View {
                 })
                     .tag(0)
 
-                SearchView().tabItem({
+                TwitterSearchView().tabItem({
                     Image(systemName: "gear")
                     Text("Slide")
                 })
