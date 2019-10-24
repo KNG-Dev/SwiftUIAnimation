@@ -28,10 +28,6 @@ struct TwitterHomeCell: View {
                 
             }
         }
-        .tabItem({
-            Image(systemName: "gear")
-            Text("Twitter")
-        })
         
         
     }

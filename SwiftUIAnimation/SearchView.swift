@@ -51,7 +51,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         let whiteView = UIView()
          whiteView.backgroundColor = .white
          view.addSubview(whiteView)
-//        whiteView.frame.size = CGSize(width: view.frame.width, height: 90)
+        whiteView.frame.size = CGSize(width: view.frame.width, height: 60)
         
         let searchBar = UISearchBar()
         searchBar.frame = frame

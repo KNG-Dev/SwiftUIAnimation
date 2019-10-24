@@ -13,54 +13,27 @@ struct TwitterView: View {
     @State var showSetting = false
     @State var showMenu = false
     @State var state = false
-    var size: CGFloat = 33
+    
     
     var body: some View {
         
         ZStack {
             TabView {
-                NavigationView {
-                    TwitterHomeCell(state: $state)
-                        .navigationBarTitle("Home", displayMode: .inline)
-                        .navigationBarItems(
-                            leading: Button(action: {
-                                print("Homed Pressed")
-                                self.showMenu.toggle()
-                                
-                            }) {
-                                Image("ProfilePic").renderingMode(.original)
-                                    .aspectRatio(contentMode: .fill)
-                                    .animation(.easeIn(duration: 0.2))
-                                    .frame(width:self.showMenu ? 0 : size, height: self.showMenu ? 0 : size)
-                                    .cornerRadius(size / 2)
-                                    .background(Color.clear)
-                                    .padding(.leading, 4)
-                                
-                            }, trailing: Button(action: {
-                                self.showSetting.toggle()
-                                
-                            }) {
-                                
-                                Image(systemName: "gear")
-                                    .resizable()
-                                    .frame(width: size, height: size)
-                                
-                        })
-                }
-                    
-                    
-                .tabItem({
-                    Image(systemName: "gear")
-                    Text("Home")
-                })
+                TwitterNavView(state: $state, showSetting: $showSetting, showMenu: $showMenu)
                 
                 TwitterSearchView().tabItem({
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 })
                     .tag(2)
-            }
                 
+                FacebookHomeView().tabItem({
+                    Image("facebookIcon-1")
+                    Text("Facebook")
+                })
+                    .tag(3)
+            }
+            .edgesIgnoringSafeArea(.top)
                 
             .offset(x: showMenu ? UIScreen.main.bounds.width - 92 : 0)
             .animation(.easeInOut(duration: 0.3))
@@ -165,3 +138,48 @@ struct TwitterView_Previews: PreviewProvider {
     }
 }
 
+
+struct TwitterNavView: View {
+    @Binding var state: Bool
+    @Binding var showSetting: Bool
+    @Binding var showMenu: Bool
+    var size: CGFloat = 33
+    
+    var body: some View {
+        NavigationView {
+            TwitterHomeCell(state: $state)
+                .navigationBarTitle("Home", displayMode: .inline)
+                .navigationBarItems(
+                    leading: Button(action: {
+                        print("Homed Pressed")
+                        self.showMenu.toggle()
+                        
+                    }) {
+                        Image("ProfilePic").renderingMode(.original)
+                            .aspectRatio(contentMode: .fill)
+                            .animation(.easeIn(duration: 0.2))
+                            .frame(width:self.showMenu ? 0 : size, height: self.showMenu ? 0 : size)
+                            .cornerRadius(size / 2)
+                            .background(Color.clear)
+                            .padding(.leading, 4)
+                        
+                    }, trailing: Button(action: {
+                        self.showSetting.toggle()
+                        
+                    }) {
+                        
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: size, height: size)
+                        
+                })
+            
+        }
+            
+        .tabItem({
+            Image(systemName: "gear")
+            Text("Home")
+        })
+        .tag(1)
+    }
+}
