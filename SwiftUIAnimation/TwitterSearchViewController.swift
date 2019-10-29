@@ -51,7 +51,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         let whiteView = UIView()
          whiteView.backgroundColor = .white
          view.addSubview(whiteView)
-        whiteView.frame.size = CGSize(width: view.frame.width, height: 60)
+        whiteView.frame.size = CGSize(width: view.frame.width, height: 90)
         
         let searchBar = UISearchBar()
         searchBar.frame = frame
@@ -91,7 +91,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         collectionView.register(NewsCell.self, forCellWithReuseIdentifier: newsCellId)
         
          collectionView.showsVerticalScrollIndicator = false
-         collectionView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
+         collectionView.contentInset = UIEdgeInsets(top: 90, left: 0, bottom: 0, right: 0)
         collectionView.isPagingEnabled = true
          
      }

@@ -8,35 +8,20 @@
 
 import SwiftUI
 
+/*
+ Twitter's Home Page. To get the burger button to slide the nav and tab bar similar to Twitter's, it was embedded within a ZStack. The navBar was embedded within TabBar so that each Tab will have custom NavBars.
+ */
+
 struct TwitterView: View {
     
     @State var showSetting = false
     @State var showMenu = false
     @State var state = false
     
-    
     var body: some View {
         
         ZStack {
-            TabView {
-                TwitterNavView(state: $state, showSetting: $showSetting, showMenu: $showMenu)
-                
-                TwitterSearchView().tabItem({
-                    Image(systemName: "magnifyingglass")
-                    Text("Search")
-                })
-                    .tag(2)
-                
-                FacebookHomeView().tabItem({
-                    Image("facebookIcon-1")
-                    Text("Facebook")
-                })
-                    .tag(3)
-            }
-            .edgesIgnoringSafeArea(.top)
-                
-            .offset(x: showMenu ? UIScreen.main.bounds.width - 92 : 0)
-            .animation(.easeInOut(duration: 0.3))
+            TabBarView(state: $state, showSetting: $showSetting, showMenu: $showMenu)
             
             GeometryReader { _ in
                 EmptyView()
@@ -64,13 +49,11 @@ struct TwitterView: View {
                 self.showMenu.toggle()
             }
             
-            //            .blur(radius: self.showSetting || self.showMenu ? 20 : 0)
             SettingView(showSetting: $showSetting)
             MenuView(showMenu: $showMenu)
             
             
         }
-        
     }
 }
 
@@ -171,15 +154,14 @@ struct TwitterNavView: View {
                         Image(systemName: "gear")
                             .resizable()
                             .frame(width: size, height: size)
-                        
                 })
-            
         }
             
         .tabItem({
             Image(systemName: "gear")
             Text("Home")
         })
-        .tag(1)
+            .tag(1)
     }
 }
+

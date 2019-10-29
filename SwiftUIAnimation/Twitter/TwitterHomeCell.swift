@@ -7,6 +7,9 @@
 //
 
 import SwiftUI
+/*
+ A custom View to be used as cell for TwitterView
+ */
 
 struct TwitterHomeCell: View {
     
@@ -24,12 +27,8 @@ struct TwitterHomeCell: View {
                     TwitterCardDescription(name: item.name, text: item.text, userName: item.userName)
                     
                 }
-                
-                
             }
-        }
-        
-        
+        } 
     }
 }
     
