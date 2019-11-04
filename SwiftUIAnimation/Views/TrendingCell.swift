@@ -7,6 +7,9 @@
 //
 
 import UIKit
+/*
+Twitter Search Page's 2nd tab
+*/
 
 class TrendingCell: UICollectionViewCell,UITableViewDataSource, UITableViewDelegate {
     

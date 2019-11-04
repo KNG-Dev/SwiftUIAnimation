@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+/*
+ Used for TwitterView. Presented after selection of hanbuger button. 
+ */
+
 let statusBarHeight = UIApplication.shared.statusBarFrame.height
 let screen = UIScreen.main.bounds
 

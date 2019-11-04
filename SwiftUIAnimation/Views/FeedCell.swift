@@ -7,6 +7,9 @@
 //
 
 import UIKit
+/*
+Twitter Search Page's results for the tabs.
+*/
 
 class FeedCell: UICollectionViewCell {
     

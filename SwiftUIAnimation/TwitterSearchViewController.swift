@@ -9,6 +9,10 @@
 import SwiftUI
 import UIKit
 
+/*
+ Twitter Search page. Built using UIKit but incorporated SwiftUI preview so you don't have to consistently run simulator. Also is easier to built using CollectionView for the tabs. 
+ */
+
 class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NavCollapseDelegate {
  
     func didScroll(scrollView: UIScrollView) {
@@ -41,17 +45,17 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          appearance.backgroundColor = .white
          appearance.shadowColor = .white
 //
-//         navBar?.isTranslucent = false
+         navBar?.isTranslucent = false
          navBar?.standardAppearance = appearance
          navigationController?.hidesBarsOnSwipe = true
         
         let frame = CGRect(x: 0, y: 0, width: view.frame.width - 140, height: 44)
         let titleView = UIView(frame: frame)
         
-        let whiteView = UIView()
-         whiteView.backgroundColor = .white
-         view.addSubview(whiteView)
-        whiteView.frame.size = CGSize(width: view.frame.width, height: 90)
+//        let whiteView = UIView()
+//         whiteView.backgroundColor = .white
+//         view.addSubview(whiteView)
+//        whiteView.frame.size = CGSize(width: view.frame.width, height: 90)
         
         let searchBar = UISearchBar()
         searchBar.frame = frame
@@ -125,7 +129,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
             return cell
         } else if indexPath.item == 2 {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newsCellId, for: indexPath) as! NewsCell
-//            cell.delegate = self
+            cell.delegate = self
             
             return cell
         }

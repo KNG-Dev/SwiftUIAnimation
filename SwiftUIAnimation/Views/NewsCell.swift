@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+Twitter Search Page's 3rd tab
+*/
+
 class NewsCell: ForYouCell {
     let newsCellId = "newsCellId"
     
@@ -39,7 +43,7 @@ class NewsCell: ForYouCell {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrolling")
+        delegate?.didScroll(scrollView: scrollView)
     }
     
     required init?(coder: NSCoder) {

@@ -6,6 +6,10 @@
 //  Copyright © 2019 Kenny Ho. All rights reserved.
 //
 
+/*
+Used for Facebook's Home Page. This is used for Facebook top view for Stories
+*/
+
 import SwiftUI
 
 struct StatusView: View {

@@ -6,6 +6,10 @@
 //  Copyright © 2019 Kenny Ho. All rights reserved.
 //
 
+/*
+ Circle profile photos layout
+*/
+
 import SwiftUI
 
 struct AvatarView: View {
@@ -14,8 +18,8 @@ struct AvatarView: View {
     
     var body: some View {
         Image(image)
-//            .resizable()
-            .aspectRatio(contentMode: .fit)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
             .frame(width: size, height: size)
             .cornerRadius(size / 2)
     }

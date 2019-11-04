@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+/*
+ Comment page for Twitter's cells when selected
+ */
+
 struct CommentDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     

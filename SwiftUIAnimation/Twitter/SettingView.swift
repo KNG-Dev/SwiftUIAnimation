@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+/*
+ SettingsView used for Twitter. 
+ */
+
 struct SettingView: View {
     @Binding var showSetting: Bool
     

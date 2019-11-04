@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+Twitter's Search menu bar. Swipe to switch sections
+*/
+
 class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private var cellId = "CellId"
     

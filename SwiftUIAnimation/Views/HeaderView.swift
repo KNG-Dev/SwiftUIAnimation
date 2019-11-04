@@ -7,7 +7,9 @@
 //
 
 import UIKit
-//import SwiftUI
+/*
+HeaderView used for Twitter Search Page
+*/
 
 class HeaderView: UICollectionReusableView {
     lazy var image: UIImageView = {

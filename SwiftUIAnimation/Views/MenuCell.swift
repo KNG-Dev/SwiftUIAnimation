@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+MenuCell use for Twitter Search Page
+*/
+
 class MenuCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {

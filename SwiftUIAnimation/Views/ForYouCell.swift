@@ -8,7 +8,9 @@
 
 import UIKit
 
-
+/*
+Twitter Search Page's 1st tab
+*/
 
 protocol NavCollapseDelegate {
     func didScroll(scrollView: UIScrollView)
