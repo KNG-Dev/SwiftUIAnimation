@@ -9,7 +9,7 @@ Goal is to share this with the community and be used as reference for future pro
 Reference-style: 
 ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[logo]: https://imgur.com/mxrfAEI"
 
 # Usage
 Within SceneDelegate, change between TwitterView and FacebookView to test.
