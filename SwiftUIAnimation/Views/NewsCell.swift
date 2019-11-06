@@ -18,27 +18,17 @@ class NewsCell: ForYouCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        collectionView.backgroundColor = UIColor(named: "Color5")
-        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: newsCellId)
+        tableView.backgroundColor = UIColor(named: "Color5")
+        tableView.register(FeedCell.self, forCellReuseIdentifier: newsCellId)
         
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! HeaderView
-        
-        let images = ["seasonPic2"]
-        header.image.image = UIImage(named: images[indexPath.item])
-        header.descriptionLabel.text = "Howdy Partner"
-        
-        return header
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newsCellId, for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: newsCellId, for: indexPath)
         return cell
     }
     

@@ -39,16 +39,11 @@ struct FacebookHomeMenu: View {
         return HStack {
             Picker(selection: $selection, label: Text("Color")) {
                 
-                HStack {
-                    
-                    Image(systemName: "gear")
-                    Text("Live")
-                }
-                
-                Text("Photo")
-                Text("Check In")
+                Image(systemName: "gear")
+                Image(systemName: "photo.fill")
+                Image(systemName: "mappin.circle.fill")
             }
-                
+        
             .pickerStyle(SegmentedPickerStyle())
             .background(Color.white)
         }
@@ -87,11 +82,12 @@ struct FacebookTopBar: View {
             
             Spacer()
             FacebookHomeMenu()
+            .frame(width: UIScreen.main.bounds.width + 8)
+            
             
         }
             
         .frame(width: UIScreen.main.bounds.width, height: 140)
-        .background(Color.white)
     }
 }
 

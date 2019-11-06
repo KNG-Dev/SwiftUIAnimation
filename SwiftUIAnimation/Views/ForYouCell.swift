@@ -16,17 +16,16 @@ protocol NavCollapseDelegate {
     func didScroll(scrollView: UIScrollView)
 }
 
-class ForYouCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ForYouCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
+    
     let cellId = "cellId"
     let headerId = "headerId"
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.delegate = self
-        cv.dataSource = self
-        cv.backgroundColor = .white
-        return cv
+    lazy var tableView: UITableView = {
+        let tb = UITableView()
+        tb.delegate = self
+        tb.dataSource = self
+        return tb
     }()
     
     var delegate: NavCollapseDelegate?
@@ -34,49 +33,34 @@ class ForYouCell: UICollectionViewCell, UICollectionViewDataSource, UICollection
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(collectionView)
-        collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom:0, paddingRight: 0, width: 0, height: 0)
-        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.backgroundColor = UIColor(named: "Color5")
+        addSubview(tableView)
+        tableView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 90, paddingLeft: 0, paddingBottom: 30, paddingRight: 0, width: 0, height: 0)
+        tableView.register(FeedCell.self, forCellReuseIdentifier: cellId)
         
-        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor(named: "Color5")
+//        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+//        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "footer")
 
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! HeaderView
-        
-        let images = ["seasonPic1"]
-        header.image.image = UIImage(named: images[indexPath.item])
-        
-        return header
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: frame.width, height: 250)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
-        let images = ["seasonPic1", "seasonPic2", "seasonPic3", "seasonPic4", "seasonPic1", "seasonPic2", "seasonPic3", "seasonPic1",]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FeedCell
+        let images = ["seasonPic1", "seasonPic2", "seasonPic3", "seasonPic4", "seasonPic1", "seasonPic2", "seasonPic3", "seasonPic1"]
         cell.feedImageView.image = UIImage(named: images[indexPath.item])
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width, height: 110)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

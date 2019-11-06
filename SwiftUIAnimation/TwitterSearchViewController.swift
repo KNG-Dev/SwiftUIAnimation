@@ -16,11 +16,11 @@ import UIKit
 class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NavCollapseDelegate {
  
     func didScroll(scrollView: UIScrollView) {
-        var lastY: CGFloat = 0
-        let isScrollingUp = scrollView.contentOffset.y - lastY > 0
-        lastY = scrollView.contentOffset.y
-//        navigationController?.hidesBarsOnSwipe = true
-    self.navigationController?.setNavigationBarHidden(isScrollingUp, animated: true)
+//        var lastY: CGFloat = 0
+//        let isScrollingUp = scrollView.contentOffset.y - lastY > 0
+//        lastY = scrollView.contentOffset.y
+        navigationController?.hidesBarsOnSwipe = true
+//    self.navigationController?.setNavigationBarHidden(isScrollingUp, animated: true)
     }
     
     private let cellId = "cellId"
@@ -43,8 +43,10 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
          let navBar = navigationController?.navigationBar
          appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-         appearance.backgroundColor = .white
-         appearance.shadowColor = .white
+         appearance.backgroundColor = UIColor(named: "TwitterDark")
+        
+        //shadowColor for the line under NavBar
+         appearance.shadowColor = UIColor(named: "TwitterDark")
 //
          navBar?.isTranslucent = false
          navBar?.standardAppearance = appearance
@@ -53,10 +55,10 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         let frame = CGRect(x: 0, y: 0, width: view.frame.width - 140, height: 44)
         let titleView = UIView(frame: frame)
         
-//        let whiteView = UIView()
-//         whiteView.backgroundColor = .white
-//         view.addSubview(whiteView)
-//        whiteView.frame.size = CGSize(width: view.frame.width, height: 90)
+        let whiteView = UIView()
+         whiteView.backgroundColor = UIColor(named: "TwitterDark")
+         view.addSubview(whiteView)
+        whiteView.frame.size = CGSize(width: view.frame.width, height: 60)
         
         let searchBar = UISearchBar()
         searchBar.frame = frame
@@ -87,18 +89,17 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
             flowLayout.minimumLineSpacing = 0
         }
         
-         collectionView.backgroundColor = .white
+//         collectionView.backgroundColor = .white
          collectionView.delegate = self
          collectionView.dataSource = self
          
          collectionView.register(ForYouCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
         collectionView.register(NewsCell.self, forCellWithReuseIdentifier: newsCellId)
+        collectionView.showsHorizontalScrollIndicator = false
         
-         collectionView.showsVerticalScrollIndicator = false
-         collectionView.contentInset = UIEdgeInsets(top: 90, left: 0, bottom: 0, right: 0)
+         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.isPagingEnabled = true
-         
      }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -138,7 +139,6 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ForYouCell
         cell.backgroundColor = .white
         cell.delegate = self
-        
         
         return cell
     }

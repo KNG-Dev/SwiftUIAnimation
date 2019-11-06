@@ -24,7 +24,7 @@ class HeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
            super.init(frame: frame)
-        backgroundColor = .white
+//        backgroundColor = UIColor(named: "TwitterDark")
         addSubview(image)
         image.fillSuperview()
         setGradientBackground()
