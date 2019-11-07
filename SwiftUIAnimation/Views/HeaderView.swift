@@ -11,7 +11,7 @@ import UIKit
 HeaderView used for Twitter Search Page
 */
 
-class HeaderView: UICollectionReusableView {
+class HeaderView: UIView {
     lazy var image: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: ""))
         imageView.contentMode = .scaleAspectFill
@@ -29,10 +29,8 @@ class HeaderView: UICollectionReusableView {
         image.fillSuperview()
         setGradientBackground()
         
-        
         nameLabel.text = "MLS • 2 hours ago"
         nameLabel.textColor = .white
-        
         
         descriptionLabel.text = "Wayne Rooney's MLS career ends after DC United's spectacular collapse in extra time"
         descriptionLabel.textColor = .white

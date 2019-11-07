@@ -9,8 +9,8 @@
 import UIKit
 
 /*
-Twitter's Search menu bar. Swipe to switch sections
-*/
+ Twitter's Search menu bar. Swipe to switch sections
+ */
 
 class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private var cellId = "CellId"
@@ -28,7 +28,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         return cv
     }()
     
-    var searchController: TwitterSearchViewController?
+    var twitterSearchController: TwitterSearchViewController?
     
     let titles = ["For You", "Trending", "News", "Sports", "Fun"]
     
@@ -43,7 +43,6 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
-        
         setupHorizontalBar()
     }
     
@@ -60,7 +59,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        searchController?.scrollToMenuIndex(menuIndex: indexPath.item)
+        twitterSearchController?.scrollToMenuIndex(menuIndex: indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,13 +76,9 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         return CGSize(width: frame.width / 5, height: frame.height)
     }
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 0
-        }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -34,7 +34,7 @@ class ForYouCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
         super.init(frame: frame)
         
         addSubview(tableView)
-        tableView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 90, paddingLeft: 0, paddingBottom: 30, paddingRight: 0, width: 0, height: 0)
+        tableView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 80, paddingLeft: 0, paddingBottom: 30, paddingRight: 0, width: 0, height: 0)
         tableView.register(FeedCell.self, forCellReuseIdentifier: cellId)
         
         tableView.tableFooterView = UIView()
@@ -45,7 +45,13 @@ class ForYouCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
+        let headerView = HeaderView()
+        headerView.image.image = UIImage(named: "seasonPic1")
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 200
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

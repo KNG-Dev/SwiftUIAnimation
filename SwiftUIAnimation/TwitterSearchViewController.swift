@@ -13,14 +13,13 @@ import UIKit
  Twitter Search page. Built using UIKit but incorporated SwiftUI preview so you don't have to consistently run simulator. Also is easier to built using CollectionView for the tabs. 
  */
 
-class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NavCollapseDelegate {
+class TwitterSearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NavCollapseDelegate, UISearchBarDelegate {
  
     func didScroll(scrollView: UIScrollView) {
-//        var lastY: CGFloat = 0
-//        let isScrollingUp = scrollView.contentOffset.y - lastY > 0
-//        lastY = scrollView.contentOffset.y
-        navigationController?.hidesBarsOnSwipe = true
-//    self.navigationController?.setNavigationBarHidden(isScrollingUp, animated: true)
+        var lastY: CGFloat = 0
+        let isScrollingUp = scrollView.contentOffset.y - lastY > 0
+        lastY = scrollView.contentOffset.y
+    self.navigationController?.setNavigationBarHidden(isScrollingUp, animated: true)
     }
     
     private let cellId = "cellId"
@@ -65,6 +64,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         searchBar.placeholder = "Search Twitter"
         searchBar.layer.cornerRadius = 20
         searchBar.clipsToBounds = true
+        searchBar.delegate = self
         
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.backgroundColor = UIColor(named: "Color5")
@@ -73,10 +73,15 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
         titleView.addSubview(searchBar)
         self.navigationItem.titleView = titleView
      }
+    
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//       present(UIViewController(), animated: true
+//        , completion: nil)
+//    }
      
      private func setupMenuBar() {
         
-        menuBar.searchController = self
+        menuBar.twitterSearchController = self
     
          view.addSubview(menuBar)
          menuBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
@@ -89,7 +94,7 @@ class TwitterSearchViewController: UICollectionViewController, UICollectionViewD
             flowLayout.minimumLineSpacing = 0
         }
         
-//         collectionView.backgroundColor = .white
+         collectionView.backgroundColor = .white
          collectionView.delegate = self
          collectionView.dataSource = self
          

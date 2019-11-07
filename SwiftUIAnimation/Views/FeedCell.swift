@@ -19,13 +19,11 @@ class FeedCell: UITableViewCell {
         return label
     }()
     
-    
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Wayne Rooney's MLS career ends after DC United's spectacular collapse in extra time"
         label.numberOfLines = 3
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        
         return label
     }()
     
@@ -41,10 +39,8 @@ class FeedCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor(named: "TwitterDark")
-        
         setupStackView()
     }
-    
     
     private func setupStackView() {
         let stackView = UIStackView(arrangedSubviews: [topicLabel, descriptionLabel])
@@ -53,10 +49,8 @@ class FeedCell: UITableViewCell {
         stackView.distribution = .fill
         
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: frame.width / 1.1, height: frame.height)
-        topicLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
-        topicLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
-        
+        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 8, paddingRight: 0, width: frame.width / 1.1, height: frame.height)
+//        topicLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
         addSubview(feedImageView)
         feedImageView.anchor(top: nil, left: stackView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 80, height: 80)
         feedImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true

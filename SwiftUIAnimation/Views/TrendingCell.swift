@@ -23,17 +23,7 @@ class TrendingCell: UICollectionViewCell,UITableViewDataSource, UITableViewDeleg
         
     }()
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.delegate = self
-//        cv.dataSource = self
-        cv.backgroundColor = .red
-        return cv
-    }()
-    
     var delegate: NavCollapseDelegate?
-    
     
     let hashTagLabel: UILabel = {
         let label = UILabel()
@@ -55,23 +45,8 @@ class TrendingCell: UICollectionViewCell,UITableViewDataSource, UITableViewDeleg
         
         addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        tableView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-        
-        
-        
-        //        let stackView = UIStackView(arrangedSubviews: [hashTagLabel, tweetLabel])
-        //        stackView.axis = .vertical
-        //        stackView.spacing = 0
-        //        stackView.distribution = .fill
-        //
-        //        addSubview(stackView)
-        //        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: frame.width / 1.35, height: frame.height)
-        //        hashTagLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
-        //        hashTagLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
-                
+        tableView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 80, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         tableView.tableFooterView = UIView()
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,8 +56,7 @@ class TrendingCell: UICollectionViewCell,UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellId)
         
-        cell.textLabel?.text = "#FFNow"
-        
+        cell.textLabel?.text = "#Swift"
         cell.detailTextLabel?.text = "32,064 Retweets"
         cell.detailTextLabel?.textColor = .gray
         return cell
@@ -97,7 +71,7 @@ class TrendingCell: UICollectionViewCell,UITableViewDataSource, UITableViewDeleg
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        delegate?.didScroll(scrollView: scrollView)
+        delegate?.didScroll(scrollView: scrollView)
     }
     
     required init?(coder: NSCoder) {
