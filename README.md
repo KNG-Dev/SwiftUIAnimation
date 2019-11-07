@@ -7,7 +7,7 @@ I recreated the home screens of Twitter and Facebook and a lot of its animations
 Goal is to share this with the community and be used as reference for future projects. I would also love to get some feedback on better implementations. Hope you guys find this useful.
 
 
-![](TwitterHomeTutorial.gif)
+![](TwitterHomeTutorial.gif)  ![](TwitterSearch.gif)
 
 # Usage
 Within SceneDelegate, change between TwitterView and FacebookView to test.
