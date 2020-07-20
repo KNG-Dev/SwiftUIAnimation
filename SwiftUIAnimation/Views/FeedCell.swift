@@ -28,7 +28,7 @@ class FeedCell: UITableViewCell {
     }()
     
     let feedImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "seasonPic1"))
+        let imageView = UIImageView(image: UIImage(named: ""))
         imageView.layer.cornerRadius = 16
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true

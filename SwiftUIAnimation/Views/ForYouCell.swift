@@ -29,6 +29,7 @@ class ForYouCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
     }()
     
     var delegate: NavCollapseDelegate?
+    let images = ["seasonPic1", "seasonPic2", "seasonPic3", "seasonPic4", "seasonPic1", "seasonPic2", "seasonPic3", "seasonPic1"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,16 +52,15 @@ class ForYouCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        return 180
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return images.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FeedCell
-        let images = ["seasonPic1", "seasonPic2", "seasonPic3", "seasonPic4", "seasonPic1", "seasonPic2", "seasonPic3", "seasonPic1"]
         cell.feedImageView.image = UIImage(named: images[indexPath.item])
         return cell
     }
