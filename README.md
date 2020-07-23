@@ -10,7 +10,7 @@ Goal is to share this with the community and be used as reference for future pro
 ![](AppleWalletAnimation.gif)
 
 # Usage
-Within SceneDelegate, change between TwitterView and FacebookView to test.
+
 
 # Requirements
 • Xcode 11
