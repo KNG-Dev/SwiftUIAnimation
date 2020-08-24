@@ -11,10 +11,8 @@ This is a work in progress and will be updated for major bugs and UI problems. I
 Goal is to share this with the community and be used as reference for future projects. I would also love to get some feedback on better implementations. Hope you guys find this useful. A good resource that was very helpful to me was MengTo's DesignCode. 
 
 
+<img src="AppleWalletAnimation.gif" width="200" />        <img src="FacebookHome.gif" width="200" />
 
-<img src="AppleWalletAnimation.gif" width="200" />
-
-![](FacebookHome.gif)
 
 
 # Usage
