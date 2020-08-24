@@ -13,19 +13,22 @@ struct FacebookHomeView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             
             FacebookTopBar(show: $show)
+                .padding(.top, 50)
+                .background(Color("FacebookPrimary"))
             
             FacebookHomeCell()
-                .padding(.top, -10)
-        }
+            
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
 struct FacebookHomeView_Previews: PreviewProvider {
     static var previews: some View {
         FacebookHomeView(show: .constant(false))
+//            .environment(\.colorScheme, .dark)
     }
 }
 
@@ -46,9 +49,11 @@ struct FacebookHomeMenu: View {
                 Image(systemName: "photo.fill")
                 Image(systemName: "mappin.circle.fill")
             }
-        
+            
+            
+                .background(Color("FacebookPrimary"))
             .pickerStyle(SegmentedPickerStyle())
-            .background(Color.white)
+            
         }
     }
 }
@@ -63,53 +68,33 @@ struct FacebookTopBar: View {
                     .foregroundColor(Color.blue)
                     .fontWeight(.semibold)
                     .font(.system(size: 26))
-                    .padding(.top, 3)
                     .padding(.leading)
                 Spacer()
                 
                 HStack {
-                    
                     if self.show == false {
-                        
-                        FacebookSearchBar(name: "Search")
+                        FacebookNavBarButtons(name: "Search")
                     }
-                    
                 }
+                .padding(.trailing)
             }
             
             HStack {
                 AvatarView(image: "ProfilePic", size: 40)
-                    .padding(.leading)
                 
                 Text("What's on your mind?")
-                    .padding(.leading)
                 Spacer()
             }
-                
-            .padding(.top, 6)
             
-            Spacer()
+            .padding(.leading)
+
             FacebookHomeMenu()
-            .frame(width: UIScreen.main.bounds.width + 8)
-            
+                .frame(width: UIScreen.main.bounds.width + 8)
+                .edgesIgnoringSafeArea(.all)
             
         }
-            
-        .frame(width: UIScreen.main.bounds.width, height: 140)
     }
 }
 
 
-struct FacebookCellButton: View {
-    var image: String
-    var text: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: image)
-            Text(text)
-        }
-        .frame(width: UIScreen.main.bounds.width / 3)
-    }
-}
 

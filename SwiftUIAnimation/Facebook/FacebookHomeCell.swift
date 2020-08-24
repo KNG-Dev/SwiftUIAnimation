@@ -19,12 +19,16 @@ struct FacebookHomeCell: View {
                         StatusView(post: item)
                         
                     }
-                        
-                    .offset(x: 10)
                 }
+                    
+                .offset(x: 20)
+                
             }
                 
+            .offset(x: -30)
             .frame(width: UIScreen.main.bounds.width, height: 223)
+                
+            .padding(.bottom)
             
             ForEach(data) { item in
                 VStack(alignment: .leading) {
@@ -41,6 +45,7 @@ struct FacebookHomeCell: View {
                     Text(item.content)
                         .lineLimit(3)
                         .padding(.trailing)
+                    
                     Spacer()
                     
                     HStack {
@@ -53,12 +58,32 @@ struct FacebookHomeCell: View {
                     .offset(x: -20)
                     
                 }
-                .padding(.leading, 15)
-            }
-                
-            .frame(height: 180)
-        }
+            }.listRowBackground(Color("FacebookSecondary"))
+            .frame(height: 140)
+            .offset(x: -10)
             
-        .padding(.leading, -15)
+        }
     }
 }
+
+struct FacebookHomeCell_Previews: PreviewProvider {
+    static var previews: some View {
+        FacebookHomeCell()
+        .environment(\.colorScheme, .dark)
+    }
+}
+
+struct FacebookCellButton: View {
+    var image: String
+    var text: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: image)
+            Text(text)
+        }
+        .frame(width: UIScreen.main.bounds.width / 3)
+    }
+}
+
+

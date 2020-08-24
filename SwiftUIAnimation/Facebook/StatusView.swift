@@ -42,12 +42,13 @@ struct StatusView: View {
                             .foregroundColor(Color.blue)
                         AvatarView(image: post.user, size: 40)
                     }
-                    .padding(4)
+                    .padding(6)
                     
-                    Spacer().padding(.leading)
+                    Spacer()
                 }
                 
                 Spacer()
+                
                 HStack {
                     Text(post.user)
                         .foregroundColor(.white)
@@ -55,10 +56,11 @@ struct StatusView: View {
                         .multilineTextAlignment(.leading)
                         .lineLimit(1)
                         .padding(.leading)
-                        .padding(.bottom, 4)
-                    Spacer().padding(.trailing).frame(width: 10)
+                        .padding(.bottom, 6)
+                    
                 }
             }
         }
+        .padding(.top)
     }
 }
