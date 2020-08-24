@@ -9,11 +9,14 @@
 import SwiftUI
 
 struct FacebookHomeView: View {
+    @Binding var show: Bool
+    
     var body: some View {
         
         VStack {
             
-            FacebookTopBar()
+            FacebookTopBar(show: $show)
+            
             FacebookHomeCell()
                 .padding(.top, -10)
         }
@@ -22,7 +25,7 @@ struct FacebookHomeView: View {
 
 struct FacebookHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        FacebookHomeView()
+        FacebookHomeView(show: .constant(false))
     }
 }
 
@@ -51,6 +54,8 @@ struct FacebookHomeMenu: View {
 }
 
 struct FacebookTopBar: View {
+    @Binding var show: Bool
+    
     var body: some View {
         VStack {
             HStack {
@@ -62,12 +67,15 @@ struct FacebookTopBar: View {
                     .padding(.leading)
                 Spacer()
                 
-                
-                FacebookMenuButton(name: "magnifyingglass")
-                FacebookMenuButton(name: "message.circle.fill")
+                HStack {
+                    
+                    if self.show == false {
+                        
+                        FacebookSearchBar(name: "Search")
+                    }
+                    
+                }
             }
-                
-            .padding(.trailing)
             
             HStack {
                 AvatarView(image: "ProfilePic", size: 40)
@@ -91,18 +99,6 @@ struct FacebookTopBar: View {
     }
 }
 
-struct FacebookMenuButton: View {
-    var name: String
-    
-    var body: some View {
-        
-        Image(systemName: name)
-            .frame(width: 35, height: 35)
-            //            .font(.system(.subheadline))
-            .background(Color("Color5"))
-            .cornerRadius(35 / 2)
-    }
-}
 
 struct FacebookCellButton: View {
     var image: String

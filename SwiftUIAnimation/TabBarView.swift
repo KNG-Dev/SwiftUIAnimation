@@ -26,7 +26,7 @@ struct TabBarView: View {
             })
                 .tag(2)
 
-            FacebookHomeView().tabItem({
+            FacebookHomeView(show: $showMenu).tabItem({
                 Image("facebookIcon-1")
                 Text("Facebook")
             })

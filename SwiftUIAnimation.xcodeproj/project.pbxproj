@@ -11,6 +11,7 @@
 		345A1C54235650F10007CF2F /* FacebookHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A1C53235650F10007CF2F /* FacebookHomeCell.swift */; };
 		345A1C57235658AA0007CF2F /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A1C56235658AA0007CF2F /* StatusView.swift */; };
 		345A1C59235660E90007CF2F /* FacebookSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345A1C58235660E90007CF2F /* FacebookSearch.swift */; };
+		3481B5F824F413C5001306D4 /* FacebookSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3481B5F724F413C5001306D4 /* FacebookSearchBar.swift */; };
 		3482F41B234F9948006E8E7A /* TwitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F41A234F9948006E8E7A /* TwitterView.swift */; };
 		3482F41D234F9955006E8E7A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F41C234F9955006E8E7A /* MenuView.swift */; };
 		3482F41F234F9BFD006E8E7A /* FacebookHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482F41E234F9BFD006E8E7A /* FacebookHomeView.swift */; };
@@ -29,6 +30,7 @@
 		349F5AA4235CCAE700C1CA67 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F5AA3235CCAE700C1CA67 /* NewsCell.swift */; };
 		34BC9CB724C53A6B00C0B5A9 /* AppleWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BC9CB624C53A6B00C0B5A9 /* AppleWalletView.swift */; };
 		34BC9CBA24C53D6500C0B5A9 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BC9CB924C53D6500C0B5A9 /* WalletView.swift */; };
+		34BC9CBC24C5498700C0B5A9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BC9CBB24C5498700C0B5A9 /* GradientView.swift */; };
 		34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B738233F5A7200838BEF /* AppDelegate.swift */; };
 		34C0B73B233F5A7200838BEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73A233F5A7200838BEF /* SceneDelegate.swift */; };
 		34C0B73D233F5A7200838BEF /* CommentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0B73C233F5A7200838BEF /* CommentDetailView.swift */; };
@@ -48,6 +50,7 @@
 		345A1C53235650F10007CF2F /* FacebookHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookHomeCell.swift; sourceTree = "<group>"; };
 		345A1C56235658AA0007CF2F /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		345A1C58235660E90007CF2F /* FacebookSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSearch.swift; sourceTree = "<group>"; };
+		3481B5F724F413C5001306D4 /* FacebookSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSearchBar.swift; sourceTree = "<group>"; };
 		3482F41A234F9948006E8E7A /* TwitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterView.swift; sourceTree = "<group>"; };
 		3482F41C234F9955006E8E7A /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		3482F41E234F9BFD006E8E7A /* FacebookHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookHomeView.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		349F5AA3235CCAE700C1CA67 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		34BC9CB624C53A6B00C0B5A9 /* AppleWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleWalletView.swift; sourceTree = "<group>"; };
 		34BC9CB924C53D6500C0B5A9 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		34BC9CBB24C5498700C0B5A9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		34C0B735233F5A7200838BEF /* SwiftUIAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C0B738233F5A7200838BEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34C0B73A233F5A7200838BEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				3482F41E234F9BFD006E8E7A /* FacebookHomeView.swift */,
+				3481B5F724F413C5001306D4 /* FacebookSearchBar.swift */,
 				345A1C53235650F10007CF2F /* FacebookHomeCell.swift */,
 				345A1C56235658AA0007CF2F /* StatusView.swift */,
 				345A1C58235660E90007CF2F /* FacebookSearch.swift */,
@@ -179,6 +184,7 @@
 			children = (
 				34C0B738233F5A7200838BEF /* AppDelegate.swift */,
 				34C0B73A233F5A7200838BEF /* SceneDelegate.swift */,
+				34BC9CBB24C5498700C0B5A9 /* GradientView.swift */,
 				34BC9CB824C53D4200C0B5A9 /* AppleWallet */,
 				345A1C55235651240007CF2F /* Facebook */,
 				345A1C50235601DC0007CF2F /* Model */,
@@ -294,11 +300,13 @@
 			files = (
 				349F5A90235ABB5E00C1CA67 /* TwitterSearchViewController.swift in Sources */,
 				3482F42523551CED006E8E7A /* User.swift in Sources */,
+				34BC9CBC24C5498700C0B5A9 /* GradientView.swift in Sources */,
 				34FCEC79236797EE00BEEAD7 /* TabBarView.swift in Sources */,
 				34FFCCFD23574B2C00E83AA3 /* TwitterHomeCell.swift in Sources */,
 				3482F41F234F9BFD006E8E7A /* FacebookHomeView.swift in Sources */,
 				349F5A9C235C72A400C1CA67 /* ForYouCell.swift in Sources */,
 				349F5A93235B587800C1CA67 /* BottomBarButtons.swift in Sources */,
+				3481B5F824F413C5001306D4 /* FacebookSearchBar.swift in Sources */,
 				34C0B739233F5A7200838BEF /* AppDelegate.swift in Sources */,
 				349F5AA2235CB40900C1CA67 /* FeedCell.swift in Sources */,
 				349F5A9A235C47D600C1CA67 /* MenuCell.swift in Sources */,

@@ -45,7 +45,7 @@ class AppleWalletView: ObservableObject {
     
     func tapCard(card: Card) {
         // when you tap on a card in the wallet
-        let tappedCardIndex = cards.index { $0.id == card.id }!
+        let tappedCardIndex = cards.firstIndex { $0.id == card.id }!
         var cardPadding = spacing
         
         // restore cards to their original positions

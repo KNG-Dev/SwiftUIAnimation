@@ -17,8 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         // Create the SwiftUI view that provides the window contents.
-        let appWalletView = AppleWalletView()
-        let contentView = WalletView(wallet: appWalletView)
+//        let appWalletView = AppleWalletView()
+//        let contentView = WalletView(wallet: appWalletView)
+        
+        let facebook = FacebookHomeView(show: .constant(false))
+        let contentView = facebook
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
